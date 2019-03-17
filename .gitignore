@@ -24,7 +24,7 @@ hs_err_pid*
 
 pom.properties
 
-node_modules/**
+**/node_modules/**
 
 **/.idea/**
 **/dist/**

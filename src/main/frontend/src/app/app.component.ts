@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { HelloService } from './services/hello.service';
 import { XDocument } from './model/XDocument';
+// import {XDocMock} from "./services/XDocListMock";
 
 @Component({
   selector: 'app-root',
@@ -23,4 +24,9 @@ export class AppComponent {
           self.xdocs = docs;
       });
   }
+
+    public save(): void {
+      console.log("save!")
+        return ;
+    }
 }

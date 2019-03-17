@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.spurtikus</groupId>
-	<artifactId>springdata-ng</artifactId>
+	<artifactId>librarian</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>springdata-ng</name>
-	<description>Spring Boot REST backend with Angular frontend using Spring Data</description>
+	<name>librarian</name>
+	<description>Book Organizer application</description>
 	
 	<parent>
 		<groupId>org.springframework.boot</groupId>
