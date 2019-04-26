@@ -1,32 +1,31 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { HelloService } from './services/hello.service';
+
+import { LibService } from './services/lib.service';
 import { XDocument } from './model/XDocument';
-// import {XDocMock} from "./services/XDocListMock";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title: String = 'mini-ng';
-  service_result: String = '(not yet called)';
+  title: String = 'Library';
   xdocs: XDocument[] = null;
 
-  constructor(protected helloService: HelloService) {
-      const self = this;
-      //helloService.getHello('test101').subscribe(echo => {
-      //    self.service_result = echo;
-      //});
-      //self.xdocs = helloService.getXDocs();
-      helloService.getXDocsSvc().subscribe(docs => {
-          self.xdocs = docs;
-      });
+  constructor(protected libService: LibService,
+              protected router: Router) {
+    const self = this;
+    libService.getXDocsSvc().subscribe(docs => {
+      self.xdocs = docs;
+    });
   }
 
-    public save(): void {
-      console.log("save!")
-        return ;
-    }
+  public update(): void {
+    console.log("update!")
+    this.router.navigateByUrl('update');
+    return ;
+  }
+
 }

@@ -8,23 +8,38 @@
      Service call result is: {{ service_result }}
   </p> -->
 
-  <h2>Documents</h2>
-  <ul class="xdocs">
-        <li *ngFor="let xdoc of xdocs">
-            <span class="xdoc">{{xdoc.id}}</span> {{xdoc.title}}, {{xdoc.publishedYear}}
-            <a href="{{xdoc.location}}">LINK</a>
-        </li>
-  </ul>
+  <router-outlet></router-outlet>
 
-  <h2>Add</h2>
-  Title: <input type="text" name="title" />
-  Year: <input type="text" name="publishedYear" />
-  Authors: <input type="text" name="authors" />
-  Categories:  <input type="text" name="authors" />
-  <button (click)="save()" class="btn btn-primary">
-    <!-- md-icon>settings_backup_restore</md-icon> -->
-    <span>Add</span>
-  </button>
+  <h2>Documents</h2>
+  <table class="xdocs">
+    <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Link</th>
+        <th>Operations</th>
+    </tr>
+    <tr *ngFor="let xdoc of xdocs">
+       <td>
+            <span class="xdoc">{{xdoc.id}}</span> {{xdoc.title}}
+        </td>
+        <td>
+            {{xdoc.publishedYear}}
+        </td>
+        <td>
+            <a href="{{xdoc.location}}">LINK</a>
+        </td>
+        <td>
+            <button (click)="update()" class="btn btn-primary">
+                <!-- md-icon>settings_backup_restore</md-icon> -->
+                <span>Update</span>
+            </button>
+        </td>
+    </tr>
+  </table>
+
+  <app-create></app-create>
+
+
 </div>
 
 
