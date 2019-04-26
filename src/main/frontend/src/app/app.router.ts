@@ -1,4 +1,3 @@
-import { ModuleWithProviders }  from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { UpdateComponent} from "./views/update/update.component";

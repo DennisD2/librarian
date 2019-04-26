@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {XDocument} from "../../model/XDocument";
-import {LibService} from "../../services/lib.service";
-import {Router} from "@angular/router";
+import { XDocument } from "../../model/XDocument";
+import { LibService } from "../../services/lib.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-list',
