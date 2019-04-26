@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-
 import { LibService } from './services/lib.service';
 import { XDocument } from './model/XDocument';
 

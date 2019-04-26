@@ -8,5 +8,3 @@ export const routes: Routes = [
     { path: 'update', component: UpdateComponent },
     { path: '', redirectTo: '/', pathMatch: 'full' },
 ];
-
-//export const routing: ModuleWithProviders = RouterModule.forRoot(routes);
