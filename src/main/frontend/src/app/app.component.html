@@ -8,36 +8,9 @@
   <!-- Location for routing results -->
   <router-outlet></router-outlet>
 
-  <h2>Documents</h2>
-  <table class="xdocs">
-    <tr>
-        <th>Title</th>
-        <th>Year</th>
-        <th>Link</th>
-        <th>Operations</th>
-    </tr>
-    <tr *ngFor="let xdoc of xdocs">
-       <td>
-            <span class="xdoc">{{xdoc.id}}</span> {{xdoc.title}}
-        </td>
-        <td>
-            {{xdoc.publishedYear}}
-        </td>
-        <td>
-            <a href="{{xdoc.location}}">LINK</a>
-        </td>
-        <td>
-            <button (click)="update()" class="btn btn-primary">
-                <!-- md-icon>settings_backup_restore</md-icon> -->
-                <span>Update</span>
-            </button>
-        </td>
-    </tr>
-  </table>
-
-  <app-create></app-create>
-
-
+<p></p>
+<hr>
+    Librarian (c) spurtikus.de 2019
 </div>
 
 

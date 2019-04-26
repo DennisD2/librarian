@@ -10,12 +10,14 @@ import { AppComponent } from './app.component';
 import { LibService } from './services/lib.service';
 import { CreateComponent } from './views/create/create.component';
 import { UpdateComponent } from './views/update/update.component';
+import { ListComponent } from './views/list/list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CreateComponent,
     UpdateComponent,
+    ListComponent,
   ],
   imports: [
     BrowserModule,
