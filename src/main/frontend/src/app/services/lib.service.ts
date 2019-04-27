@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 import { XDocument } from '../model/XDocument';
 
@@ -66,5 +66,19 @@ export class LibService {
         .pipe(catchError((e: any) => this.handleError(e)));
   }
 
+  // DELETE a document
+  public deleteDocument(doc: XDocument) : Observable<any> {
+    const serviceUrl = this.documentUrl ; // + '/' + doc.id;
+    console.log('Calling service URL ' + serviceUrl);
+
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+
+    const params = new HttpParams().set('id', doc.id);
+
+    return this.http.delete(serviceUrl,  { params })
+        .pipe(map((data: any) => { console.log('Delete call result: ' + data); return data;}))
+        .pipe(catchError((e: any) => this.handleError(e)));
+  }
 
 }

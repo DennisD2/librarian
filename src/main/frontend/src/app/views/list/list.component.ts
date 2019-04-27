@@ -23,14 +23,20 @@ export class ListComponent implements OnInit {
     });
   }
 
+  public create(): void {
+    this.router.navigateByUrl('create');
+  }
+
   public update(index: number): void {
     index++;
     console.log('id from button event: ' + index);
     this.router.navigateByUrl('update/' + index );
   }
 
-  public create(): void {
-    this.router.navigateByUrl('create');
+  public delete(index: number): void {
+    index++;
+    console.log('id from button event: ' + index);
+    this.router.navigateByUrl('delete/' + index );
   }
 
 
