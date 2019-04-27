@@ -29,7 +29,8 @@ export class LibService {
     .pipe(catchError((e: any) => this.handleError(e)));
   }
 
-  public getXDocsSvc(): Observable<XDocument[]> {
+  // READ ALL documents
+  public getAllDocuments(): Observable<XDocument[]> {
     const serviceUrl = this.baseUrl + '/documents';
     //const serviceUrl = this.baseUrl + '/documents';
     console.log('Calling service URL ' + serviceUrl);
@@ -38,5 +39,29 @@ export class LibService {
         .pipe(map((data: any) => { console.log('Service call result: ' + data); return data._embedded.documents;}))
         .pipe(catchError((e: any) => this.handleError(e)));
   }
+
+  // READ single document
+  public getDocument(id: string): Observable<XDocument> {
+    const serviceUrl = this.baseUrl + '/documents/' + id;
+    //const serviceUrl = this.baseUrl + '/documents/' + id;
+    console.log('Calling service URL ' + serviceUrl);
+
+    return this.http.get<XDocument>(serviceUrl)
+        .pipe(map((data: any) => { console.log('Service call result: ' + data); return data;}))
+        .pipe(catchError((e: any) => this.handleError(e)));
+  }
+
+  // UPDATE a document
+  public updateDocument(doc: XDocument) : Observable<XDocument> {
+    const serviceUrl = this.baseUrl + '/documents/' + doc.id;
+    //const serviceUrl = this.baseUrl + '/documents/' + id;
+    console.log('Calling service URL ' + serviceUrl);
+
+    // TODO: replace with real UPDATE call
+    return this.http.get<XDocument>(serviceUrl)
+        .pipe(map((data: any) => { console.log('Service call result: ' + data); return data;}))
+        .pipe(catchError((e: any) => this.handleError(e)));
+  }
+
 
 }

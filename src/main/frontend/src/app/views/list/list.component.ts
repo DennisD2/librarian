@@ -17,14 +17,15 @@ export class ListComponent implements OnInit {
   }
 
   public update(index: number): void {
-    console.log('index: ' + index);
+    index++;
+    console.log('id from button event: ' + index);
     this.router.navigateByUrl('update/' + index );
     return ;
   }
 
   ngOnInit() {
     const self = this;
-    this.libService.getXDocsSvc().subscribe(docs => {
+    this.libService.getAllDocuments().subscribe(docs => {
       self.xdocs = docs;
     });
   }

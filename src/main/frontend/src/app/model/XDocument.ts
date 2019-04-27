@@ -1,5 +1,5 @@
 export interface XDocument {
-    id: number;
+    id: string;
     title: string;
     publishedYear: number;
     location: string;
