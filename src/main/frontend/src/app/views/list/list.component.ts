@@ -16,18 +16,23 @@ export class ListComponent implements OnInit {
               protected router: Router) {
   }
 
-  public update(index: number): void {
-    index++;
-    console.log('id from button event: ' + index);
-    this.router.navigateByUrl('update/' + index );
-    return ;
-  }
-
   ngOnInit() {
     const self = this;
     this.libService.getAllDocuments().subscribe(docs => {
       self.xdocs = docs;
     });
   }
+
+  public update(index: number): void {
+    index++;
+    console.log('id from button event: ' + index);
+    this.router.navigateByUrl('update/' + index );
+  }
+
+  public create(): void {
+    this.router.navigateByUrl('create');
+  }
+
+
 
 }

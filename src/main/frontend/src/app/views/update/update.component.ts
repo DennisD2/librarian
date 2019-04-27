@@ -26,10 +26,9 @@ export class UpdateComponent implements OnInit {
     });
   }
 
-  public remove_view(): void {
-    console.log("remove view!")
+  public cancel_view(): void {
+    console.log("cancel update.")
     this.router.navigateByUrl('');
-    return ;
   }
 
   public update(): void {

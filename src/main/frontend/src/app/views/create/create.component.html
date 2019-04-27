@@ -1,11 +1,18 @@
-<h2>Add</h2>
+<h2>Create</h2>
 
-Title: <input type="text" name="title" size="30" />
-Year: <input type="number" name="publishedYear" maxlength="4" />
+Title: <input type="text" id="title2" size="30" [(ngModel)]="xdoc.title" >
+
+Year: <input type="number" name="publishedYear" maxlength="4" [(ngModel)]="xdoc.publishedYear" />
+
 Authors: <input type="text" name="authors" />
 Categories:  <input type="text" name="authors" />
 
-<button (click)="save()" class="btn btn-primary">
+<button (click)="create()" class="btn btn-primary">
   <!-- md-icon>settings_backup_restore</md-icon> -->
-  <span>Add</span>
+  <span>Create</span>
+</button>
+
+<button (click)="cancel_view()" class="btn btn-primary">
+  <!-- md-icon>settings_backup_restore</md-icon> -->
+  <span>Cancel</span>
 </button>
