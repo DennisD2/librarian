@@ -30,12 +30,12 @@ export class LibService {
   }
 
   public getXDocsSvc(): Observable<XDocument[]> {
-    const serviceUrl = this.baseUrl + '/document';
+    const serviceUrl = this.baseUrl + '/documents';
     //const serviceUrl = this.baseUrl + '/documents';
     console.log('Calling service URL ' + serviceUrl);
 
     return this.http.get<XDocument[]>(serviceUrl)
-        .pipe(map((data: any) => { console.log('Service call result: ' + data); return data._embedded.xdocument;}))
+        .pipe(map((data: any) => { console.log('Service call result: ' + data); return data._embedded.documents;}))
         .pipe(catchError((e: any) => this.handleError(e)));
   }
 

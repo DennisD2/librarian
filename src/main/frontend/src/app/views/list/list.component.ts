@@ -16,8 +16,9 @@ export class ListComponent implements OnInit {
               protected router: Router) {
   }
 
-  public update(): void {
-    this.router.navigateByUrl('update' + '/2' );
+  public update(index: number): void {
+    console.log('index: ' + index);
+    this.router.navigateByUrl('update/' + index );
     return ;
   }
 

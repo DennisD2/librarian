@@ -119,7 +119,7 @@ public class Document implements Serializable {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("Document [title=").append(title).append("]").append("[published=").append(publishedYear).append("]");
+        builder.append("Document [id=").append(id).append("][title=").append(title).append("]").append("[published=").append(publishedYear).append("]");
         return builder.toString();
     }
 
