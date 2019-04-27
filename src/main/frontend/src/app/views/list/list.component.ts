@@ -14,19 +14,18 @@ export class ListComponent implements OnInit {
 
   constructor(protected libService: LibService,
               protected router: Router) {
-    const self = this;
-    libService.getXDocsSvc().subscribe(docs => {
-      self.xdocs = docs;
-    });
   }
 
   public update(): void {
-    console.log("update!")
-    this.router.navigateByUrl('update');
+    this.router.navigateByUrl('update' + '/2' );
     return ;
   }
 
   ngOnInit() {
+    const self = this;
+    this.libService.getXDocsSvc().subscribe(docs => {
+      self.xdocs = docs;
+    });
   }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute, ParamMap } from "@angular/router";
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-update',
@@ -8,9 +9,16 @@ import {Router} from "@angular/router";
 })
 export class UpdateComponent implements OnInit {
 
-  constructor(protected router: Router) { }
+  constructor(protected route: ActivatedRoute,
+              protected router: Router) { }
 
   ngOnInit() {
+    //this.hero$ = this.route.paramMap.pipe(
+    //    switchMap((params: ParamMap) =>
+    //        this.service.getHero(params.get('id')))
+    let id = this.route.snapshot.paramMap.get('id');
+    console.log("Id found: " + id);
+
   }
 
   public remove_view(): void {
@@ -21,7 +29,7 @@ export class UpdateComponent implements OnInit {
 
   public update(): void {
     console.log("update!")
-    this.router.navigateByUrl('update');
+    this.router.navigateByUrl('update' );
     return ;
   }
 
