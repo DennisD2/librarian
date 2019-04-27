@@ -51,8 +51,8 @@ export class LibService {
         .pipe(catchError((e: any) => this.handleError(e)));
   }
 
-  // UPDATE a document
-  public updateDocument(doc: XDocument) : Observable<XDocument> {
+  // UPDATE or CREATE a document
+  public updateOrCreateDocument(doc: XDocument) : Observable<XDocument> {
     const serviceUrl = this.documentUrl + '/' + doc.id;
     console.log('Calling service URL ' + serviceUrl);
     const data = JSON.stringify(doc);

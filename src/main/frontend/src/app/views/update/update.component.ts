@@ -9,7 +9,12 @@ import {XDocument} from "../../model/XDocument";
   styleUrls: ['./update.component.css']
 })
 export class UpdateComponent implements OnInit {
-  xdoc: XDocument = null;
+  xdoc: XDocument = new class implements XDocument {
+    id: '';
+    location: '';
+    publishedYear: 0;
+    title: '';
+  };
 
   constructor(protected route: ActivatedRoute,
               protected router: Router,
@@ -34,7 +39,7 @@ export class UpdateComponent implements OnInit {
   public update(): void {
     console.log("update!")
     let self = this;
-    this.libService.updateDocument(self.xdoc).subscribe(doc => {
+    this.libService.updateOrCreateDocument(self.xdoc).subscribe(doc => {
       self.xdoc = doc;
       console.log("updated doc: " + self.xdoc);
     });

@@ -9,7 +9,12 @@ import {LibService} from "../../services/lib.service";
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
-  xdoc: XDocument = null;
+  xdoc: XDocument = new class implements XDocument {
+    id: '';
+    location: '';
+    publishedYear: 0;
+    title: '';
+  };
 
   constructor(protected route: ActivatedRoute,
               protected router: Router,
@@ -24,10 +29,11 @@ export class CreateComponent implements OnInit {
   }
 
   public create(): void {
-    console.log("create!")
+    console.log("create: " + JSON.stringify(this.xdoc));
     let self = this;
-    // create is 'update and no id set'
-    this.libService.updateDocument(self.xdoc).subscribe(doc => {
+    // create is 'update and id==0'
+    self.xdoc.id = '0';
+    this.libService.updateOrCreateDocument(self.xdoc).subscribe(doc => {
       self.xdoc = doc;
       console.log("created doc: " + self.xdoc);
     });
