@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute } from "@angular/router";
 import {LibService} from "../../services/lib.service";
 import {XDocument} from "../../model/XDocument";
@@ -34,7 +34,7 @@ export class UpdateComponent implements OnInit {
 
   public update(): void {
     console.log("update!")
-     let self = this;
+    let self = this;
     this.libService.updateDocument(self.xdoc).subscribe(doc => {
       self.xdoc = doc;
       console.log("updated doc: " + self.xdoc);

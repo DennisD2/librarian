@@ -11,7 +11,7 @@ import { LibService } from './services/lib.service';
 import { CreateComponent } from './views/create/create.component';
 import { UpdateComponent } from './views/update/update.component';
 import { ListComponent } from './views/list/list.component';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
