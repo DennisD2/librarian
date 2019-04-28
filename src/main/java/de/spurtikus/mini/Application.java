@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class Application {
 
@@ -21,6 +23,13 @@ public class Application {
     @Bean
     public CommandLineRunner demo(DocumentRepository repository) {
         return (args) -> {
+            List<Document> docs = repository.findByTitle("HP-75C FORTH");
+            if (!docs.isEmpty()) {
+                System.out.println("DB already populated. Will not add test samples.");
+                return;
+            }
+            System.out.println("DB is empty. Will add test samples.");
+
             // save a couple of Documents
             repository.save(new Document("HP-75C FORTH", 1983, "file:///home/dennis/doclib/software/75Forth.pdf"));
             repository.save(new Document("Introduction to Hibernate (Slides)", 2009, "file:///home/dennis/doclib/software/01-hibernate-Introduction_to_Hibernate.pdf"));
@@ -54,7 +63,7 @@ public class Application {
             repository.save(new Document("HADES Tutorial (v0.92)", 2006, "file:///home/dennis/doclib/electronics/hades_tutorial.pdf"));
             repository.save(new Document("High Speed Amplifier Techniques AN47 (Linear Technologies)", 2006, "file:///home/dennis/doclib/electronics/linear_technology_an47fa_fast_amps.pdf"));
             repository.save(new Document("Complete Digital Design", 2003, "file:///home/dennis/doclib/electronics/McGraw Hill - Complete Digital Design A Comprehensive Guide to Digital Electronics and Computer System Architecture.pdf"));
-            repository.save(new Document("Teach yourself Electrcity and Electronics", 2002, "file:///home/dennis/doclib/electronics/Mcgraw-Hill - Teach Yourself Electricity And Electronics.pdf"));
+            repository.save(new Document("Teach yourself Electricity and Electronics", 2002, "file:///home/dennis/doclib/electronics/Mcgraw-Hill - Teach Yourself Electricity And Electronics.pdf"));
             repository.save(new Document("Die Arthmetisch-Logische Einheit ALU 74181", 2003, "file:///home/dennis/doclib/electronics/Modellcomputer.pdf"));
             repository.save(new Document("Linear Applications Volume 2 (National Semiconductors)", 1976, "file:///home/dennis/doclib/electronics/NS_1976_LinearApplications.pdf"));
             repository.save(new Document("Op Amp Circuit Collection (National Semiconductors)", 2002, "file:///home/dennis/doclib/electronics/opamp_circiut_collection_ns_2003SEP19_AMD_AN07.pdf"));
