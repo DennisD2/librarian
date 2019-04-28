@@ -14,6 +14,7 @@ export class CreateComponent implements OnInit {
     location: '';
     publishedYear: 0;
     title: '';
+    _links: null;
   };
 
   constructor(protected route: ActivatedRoute,
@@ -35,7 +36,7 @@ export class CreateComponent implements OnInit {
     self.xdoc.id = '0';
     this.libService.updateOrCreateDocument(self.xdoc).subscribe(doc => {
       self.xdoc = doc;
-      console.log("created doc: " + self.xdoc);
+      console.log("created doc: " + JSON.stringify(self.xdoc));
     });
     this.router.navigateByUrl('' );
   }

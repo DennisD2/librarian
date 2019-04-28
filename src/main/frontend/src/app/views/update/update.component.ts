@@ -14,6 +14,7 @@ export class UpdateComponent implements OnInit {
     location: '';
     publishedYear: 0;
     title: '';
+    _links: null;
   };
 
   constructor(protected route: ActivatedRoute,
@@ -22,12 +23,13 @@ export class UpdateComponent implements OnInit {
 
   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
-    console.log("Id found: " + id);
+    console.log("Id from param map: " + id);
     let self = this;
     this.libService.getDocument(id).subscribe(doc => {
       self.xdoc = doc;
-      console.log("doc: " + self.xdoc);
+      console.log("doc: " + JSON.stringify(self.xdoc));
       self.xdoc.id = id;
+      //console.log("doc1: " + JSON.stringify(self.xdoc._links['self'].href));
     });
   }
 
@@ -41,7 +43,7 @@ export class UpdateComponent implements OnInit {
     let self = this;
     this.libService.updateOrCreateDocument(self.xdoc).subscribe(doc => {
       self.xdoc = doc;
-      console.log("updated doc: " + self.xdoc);
+      console.log("updated doc: " + JSON.stringify(self.xdoc));
     });
     this.router.navigateByUrl('' );
   }

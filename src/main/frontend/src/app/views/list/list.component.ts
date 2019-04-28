@@ -28,17 +28,23 @@ export class ListComponent implements OnInit {
   }
 
   public update(index: number): void {
-    index++;
     console.log('id from button event: ' + index);
-    this.router.navigateByUrl('update/' + index );
+    let remote_id = this.getRemoteId(this.xdocs[index]._links['self'].href);
+    this.router.navigateByUrl('update/' + remote_id );
   }
 
   public delete(index: number): void {
-    index++;
     console.log('id from button event: ' + index);
-    this.router.navigateByUrl('delete/' + index );
+    let remote_id = this.getRemoteId(this.xdocs[index]._links['self'].href);
+    this.router.navigateByUrl('delete/' + remote_id );
   }
 
-
+  // Calculate remote id from self URL string
+  protected getRemoteId(selfUrl: string): string {
+    let parts = selfUrl.split("/");
+    let id = parts[parts.length-1];
+    console.log("remote id: " + id);
+    return id;
+  }
 
 }

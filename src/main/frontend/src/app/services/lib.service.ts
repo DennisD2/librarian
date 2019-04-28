@@ -34,9 +34,9 @@ export class LibService {
   // READ ALL documents
   public getAllDocuments(): Observable<XDocument[]> {
     const serviceUrl = this.documentUrl;
-    console.log('Calling service URL ' + serviceUrl);
+    console.log('READALL service URL ' + serviceUrl);
     return this.http.get<XDocument[]>(serviceUrl)
-        .pipe(map((data: any) => { console.log('Service call result: ' + data); return data._embedded.documents;}))
+        .pipe(map((data: any) => { console.log('Service call result: ' + data); return data._embedded.xdocument;}))
         .pipe(catchError((e: any) => this.handleError(e)));
   }
 
@@ -44,7 +44,7 @@ export class LibService {
   // READ single document
   public getDocument(id: string): Observable<XDocument> {
     const serviceUrl = this.documentUrl + '/' + id;
-    console.log('Calling service URL ' + serviceUrl);
+    console.log('READ service URL ' + serviceUrl);
 
     return this.http.get<XDocument>(serviceUrl)
         .pipe(map((data: any) => { console.log('Service call result: ' + data); return data;}))
@@ -54,7 +54,7 @@ export class LibService {
   // UPDATE or CREATE a document
   public updateOrCreateDocument(doc: XDocument) : Observable<XDocument> {
     const serviceUrl = this.documentUrl + '/' + doc.id;
-    console.log('Calling service URL ' + serviceUrl);
+    console.log('UPDATE/CREATE service URL ' + serviceUrl);
     const data = JSON.stringify(doc);
     console.log('POST data: ' + data);
 
@@ -68,15 +68,10 @@ export class LibService {
 
   // DELETE a document
   public deleteDocument(doc: XDocument) : Observable<any> {
-    const serviceUrl = this.documentUrl ; // + '/' + doc.id;
-    console.log('Calling service URL ' + serviceUrl);
+    const serviceUrl = this.documentUrl + '/' + doc.id;
+    console.log('DELETE service URL ' + serviceUrl);
 
-    let headers = new HttpHeaders();
-    headers.append('Content-Type', 'application/json');
-
-    const params = new HttpParams().set('id', doc.id);
-
-    return this.http.delete(serviceUrl,  { params })
+    return this.http.delete(serviceUrl)
         .pipe(map((data: any) => { console.log('Delete call result: ' + data); return data;}))
         .pipe(catchError((e: any) => this.handleError(e)));
   }

@@ -28,6 +28,7 @@ pom.properties
 
 **/.idea/**
 **/dist/**
+*.iml
 
 package-lock.json
 springdata-ng.iml
