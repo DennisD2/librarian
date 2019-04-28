@@ -1,11 +1,8 @@
 package de.spurtikus.mini.data.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
-import java.net.URL;
+import java.util.Set;
 
 @Entity
 public class Document implements Serializable {
@@ -24,23 +21,16 @@ public class Document implements Serializable {
     private String location;
 
     // List of Authors
-    private Author[] authors;
+    @OneToMany
+    private Set<Author> authors;
 
     // List of Categories
-    private Category[] categories;
+    @OneToMany
+    private Set<Category> categories;
 
     public Document() {
         super();
     }
-
-//    public Document(String title) {
-//        this.title = title;
-//    }
-//
-//    public Document(String title, int publishedYear) {
-//        this.title = title;
-//        this.publishedYear = publishedYear;
-//    }
 
     public Document(String title, int publishedYear, String location) {
         this.title = title;
@@ -71,22 +61,21 @@ public class Document implements Serializable {
         this.publishedYear = publishedYear;
     }
 
-    public Author[] getAuthors() {
+    public Set<Author> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(Author[] authors) {
+    public void setAuthors(Set<Author> authors) {
         this.authors = authors;
     }
 
-    public Category[] getCategories() {
+    public Set<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(Category[] categories) {
+    public void setCategories(Set<Category> categories) {
         this.categories = categories;
     }
-
 
     public String getLocation() {
         return location;

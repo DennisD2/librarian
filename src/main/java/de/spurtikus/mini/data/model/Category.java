@@ -1,12 +1,10 @@
 package de.spurtikus.mini.data.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Category {
+public class Category implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,6 +14,11 @@ public class Category {
 
     public Category() {
         super();
+    }
+
+    public Category(String category) {
+        super();
+        this.category = category;
     }
 
     public Long getId() {
