@@ -11,8 +11,8 @@ import { XDocument } from '../model/XDocument';
 })
 export class LibService {
   private baseUrl: string = 'http://localhost:8080';
-  private documentUrl: string = this.baseUrl + '/documents';
-  //private documentUrl: string = this.baseUrl + '/document';
+  //private documentUrl: string = this.baseUrl + '/documents';
+  private documentUrl: string = this.baseUrl + '/document';
 
   constructor(protected http:  HttpClient) {
   }
@@ -36,6 +36,7 @@ export class LibService {
     const serviceUrl = this.documentUrl;
     console.log('READALL service URL ' + serviceUrl);
     return this.http.get<XDocument[]>(serviceUrl)
+         /*.pipe(map((data: any) => { console.log('Service call result: ' + data); return data._embedded.documents;}))*/
         .pipe(map((data: any) => { console.log('Service call result: ' + data); return data._embedded.xdocument;}))
         .pipe(catchError((e: any) => this.handleError(e)));
   }
