@@ -15,6 +15,7 @@ export class UpdateComponent implements OnInit {
     publishedYear: 0;
     title: '';
     _links: null;
+    resolvedCategories: [];
   };
 
   constructor(protected route: ActivatedRoute,

@@ -77,4 +77,21 @@ export class LibService {
         .pipe(catchError((e: any) => this.handleError(e)));
   }
 
+  // Get categories of a document
+  public getCategories(doc: XDocument) : Observable<string[]> {
+    // console.log(doc._links['categories'].href);
+    const serviceUrl = doc._links['categories'].href;
+    console.log('GET CATEGORIES service URL ' + serviceUrl);
+
+    // Map complex returned JSON to simple string array.
+    return this.http.get<string[]>(serviceUrl)
+        .pipe(map((data: any) => {
+          console.log('GET CATEGORIES Service call result: ' + data._embedded.category);
+          let cats : string[] = [];
+          data._embedded.category.forEach( cat => cats.push(cat.category))
+          return cats;
+        }))
+        .pipe(catchError((e: any) => this.handleError(e)));
+  }
+
 }

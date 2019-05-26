@@ -13,6 +13,7 @@
     <th>Year</th>
     <th>Link</th>
     <th>Selflink</th>
+    <th>Categories</th>
     <th>Operations</th>
   </tr>
   <tr *ngFor="let xdoc of xdocs; let i = index">
@@ -29,7 +30,12 @@
     </td>
 
     <td>
-      <a href="{{xdoc._links.self.href}}">SELF</a>
+     <a href="{{xdoc._links.self.href}}">SELF</a>
+    </td>
+
+    <!-- list all categories -->
+    <td>
+      <span *ngFor="let cat of xdoc.resolvedCategories;"><span>[{{cat}}]&nbsp;</span></span>
     </td>
 
     <td>
@@ -42,5 +48,4 @@
         <span>Update</span>
       </button>
     </td>
-  </tr>
 </table>

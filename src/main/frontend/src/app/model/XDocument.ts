@@ -6,4 +6,6 @@ export interface XDocument {
     publishedYear: number;
     location: string;
     _links: XLink[];
+
+    resolvedCategories: string[];
 }

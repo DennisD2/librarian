@@ -20,6 +20,15 @@ export class ListComponent implements OnInit {
     const self = this;
     this.libService.getAllDocuments().subscribe(docs => {
       self.xdocs = docs;
+      self.loadCategories();
+    });
+  }
+
+  public loadCategories(): void {
+    this.xdocs.forEach( xdoc => {
+      this.libService.getCategories(xdoc).subscribe( categories => {
+        xdoc.resolvedCategories = categories;
+      })
     });
   }
 
