@@ -88,7 +88,7 @@ export class LibService {
         .pipe(map((data: any) => {
           console.log('GET CATEGORIES Service call result: ' + data._embedded.category);
           let cats : string[] = [];
-          data._embedded.category.forEach( cat => cats.push(cat.category))
+          data._embedded.category.forEach( cat => cats.push(cat.category));
           return cats;
         }))
         .pipe(catchError((e: any) => this.handleError(e)));
