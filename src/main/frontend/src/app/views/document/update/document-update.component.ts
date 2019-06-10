@@ -5,10 +5,10 @@ import {XDocument} from "../../../model/XDocument";
 
 @Component({
   selector: 'app-update',
-  templateUrl: './update.component.html',
-  styleUrls: ['./update.component.css']
+  templateUrl: './document-update.component.html',
+  styleUrls: ['./document-update.component.css']
 })
-export class UpdateComponent implements OnInit {
+export class DocumentUpdateComponent implements OnInit {
   xdoc: XDocument = new class implements XDocument {
     id: '';
     location: '';

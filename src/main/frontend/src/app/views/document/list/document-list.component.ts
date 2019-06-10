@@ -5,10 +5,10 @@ import { LibService } from "../../../services/lib.service";
 
 @Component({
   selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  templateUrl: './document-list.component.html',
+  styleUrls: ['./document-list.component.css']
 })
-export class ListComponent implements OnInit {
+export class DocumentListComponent implements OnInit {
   title: String = 'List';
   xdocs: XDocument[] = null;
 

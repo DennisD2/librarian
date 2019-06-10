@@ -10,18 +10,18 @@ import { AppComponent } from './app.component';
 
 import { LibService } from './services/lib.service';
 
-import { CreateComponent } from './views/document/create/create.component';
-import { UpdateComponent } from './views/document/update/update.component';
-import { ListComponent } from './views/document/list/list.component';
-import { DeleteComponent } from './views/document/delete/delete.component';
+import { DocumentCreateComponent } from './views/document/create/document-create.component';
+import { DocumentUpdateComponent } from './views/document/update/document-update.component';
+import { DocumentListComponent } from './views/document/list/document-list.component';
+import { DocumentDeleteComponent } from './views/document/delete/document-delete.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateComponent,
-    UpdateComponent,
-    ListComponent,
-    DeleteComponent,
+    DocumentCreateComponent,
+    DocumentUpdateComponent,
+    DocumentListComponent,
+    DocumentDeleteComponent,
   ],
   imports: [
     BrowserModule,

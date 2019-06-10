@@ -7,10 +7,10 @@ import {LibService} from "../../../services/lib.service";
 
 @Component({
   selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  templateUrl: './document-create.component.html',
+  styleUrls: ['./document-create.component.css']
 })
-export class CreateComponent implements OnInit {
+export class DocumentCreateComponent implements OnInit {
   xdoc: XDocument = new class implements XDocument {
     id: '';
     location: '';

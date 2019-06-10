@@ -5,10 +5,10 @@ import {LibService} from "../../../services/lib.service";
 
 @Component({
   selector: 'app-delete',
-  templateUrl: './delete.component.html',
-  styleUrls: ['./delete.component.css']
+  templateUrl: './document-delete.component.html',
+  styleUrls: ['./document-delete.component.css']
 })
-export class DeleteComponent implements OnInit {
+export class DocumentDeleteComponent implements OnInit {
   xdoc: XDocument = new class implements XDocument {
     id: '';
     location: '';
