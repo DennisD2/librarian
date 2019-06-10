@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute } from "@angular/router";
-import {LibService} from "../../services/lib.service";
-import {XDocument} from "../../model/XDocument";
+import {LibService} from "../../../services/lib.service";
+import {XDocument} from "../../../model/XDocument";
 
 @Component({
   selector: 'app-update',

@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
 
-import { UpdateComponent} from "./views/update/update.component";
-import { ListComponent} from "./views/list/list.component";
-import { CreateComponent } from "./views/create/create.component";
-import { DeleteComponent } from "./views/delete/delete.component";
+import { UpdateComponent} from "./views/document/update/update.component";
+import { ListComponent} from "./views/document/list/list.component";
+import { CreateComponent } from "./views/document/create/create.component";
+import { DeleteComponent } from "./views/document/delete/delete.component";
 
 // Route Configuration.
 export const routes: Routes = [

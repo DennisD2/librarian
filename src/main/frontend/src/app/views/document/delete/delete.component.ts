@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {XDocument} from "../../model/XDocument";
 import {ActivatedRoute, Router} from "@angular/router";
-import {LibService} from "../../services/lib.service";
+import {XDocument} from "../../../model/XDocument";
+import {LibService} from "../../../services/lib.service";
 
 @Component({
   selector: 'app-delete',
