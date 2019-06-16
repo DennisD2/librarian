@@ -9,6 +9,7 @@ import {LibService} from "../../../services/lib.service";
     styleUrls: ['./category-create.component.css']
 })
 export class CategoryCreateComponent implements OnInit {
+    title: string = 'Create Category';
     cat: XCategory = new class implements XCategory {
         id: '';
         category: '';
@@ -37,7 +38,7 @@ export class CategoryCreateComponent implements OnInit {
             self.cat = doc;
             console.log("created doc: " + JSON.stringify(self.cat));
         });
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('cat/list');
     }
 
 }

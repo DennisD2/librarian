@@ -9,8 +9,8 @@ import {LibService} from "../../../services/lib.service";
     styleUrls: ['./document-list.component.css']
 })
 export class DocumentListComponent implements OnInit {
-    title: string = 'List';
-    urlPrefix: string = 'cat';
+    title: string = 'List Documents';
+    urlPrefix: string = 'doc';
     xdocs: XDocument[] = null;
 
     constructor(protected libService: LibService,
@@ -50,7 +50,7 @@ export class DocumentListComponent implements OnInit {
     }
 
     public categories(): void {
-        this.router.navigateByUrl(this.urlPrefix + '/list');
+        this.router.navigateByUrl(this.urlPrefix + 'cat/list');
     }
 
     // Calculate remote id from self URL string

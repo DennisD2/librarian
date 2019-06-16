@@ -11,6 +11,7 @@ import {LibService} from "../../../services/lib.service";
     styleUrls: ['./document-create.component.css']
 })
 export class DocumentCreateComponent implements OnInit {
+    title: string = 'Create Document';
     xdoc: XDocument = new class implements XDocument {
         id: '';
         location: '';

@@ -9,6 +9,7 @@ import {XCategory} from "../../../model/XCategory";
     styleUrls: ['./category-update.component.css']
 })
 export class CategoryUpdateComponent implements OnInit {
+    title: string = 'Update Category';
     cat: XCategory = new class implements XCategory {
         id: '';
         category: '';

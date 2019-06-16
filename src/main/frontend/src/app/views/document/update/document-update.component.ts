@@ -9,6 +9,7 @@ import {XDocument} from "../../../model/XDocument";
     styleUrls: ['./document-update.component.css']
 })
 export class DocumentUpdateComponent implements OnInit {
+    title: string = 'Update Document';
     xdoc: XDocument = new class implements XDocument {
         id: '';
         location: '';

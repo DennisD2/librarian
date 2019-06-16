@@ -9,6 +9,7 @@ import {LibService} from "../../../services/lib.service";
     styleUrls: ['./document-delete.component.css']
 })
 export class DocumentDeleteComponent implements OnInit {
+    title: string = 'Delete Document';
     xdoc: XDocument = new class implements XDocument {
         id: '';
         location: '';
