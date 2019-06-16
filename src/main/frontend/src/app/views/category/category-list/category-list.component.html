@@ -1,0 +1,40 @@
+
+<button (click)="create()" class="btn btn-primary">
+  <!-- md-icon>settings_backup_restore</md-icon> -->
+  <span>Create new category</span>
+</button>
+<button (click)="back()" class="btn btn-primary">
+  <!-- md-icon>settings_backup_restore</md-icon> -->
+  <span>Back</span>
+</button>
+
+<h2>Categories</h2>
+<table class="xcats">
+  <tr>
+    <th>Id</th>
+    <th>Category</th>
+    <th>Selflink</th>
+    <th>Operations</th>
+  </tr>
+
+<tr *ngFor="let xcat of categories; let i = index">
+  <td>
+    <span class="xcat">{{i}}</span>
+  </td>
+  <td>
+    <span class="xcat">{{xcat.category}}</span>
+  </td>
+
+  <td>
+    <a href="{{xcat._links.self.href}}">SELF</a>
+  </td>
+
+  <td>
+    <button (click)="update(i)" class="btn btn-primary">
+      <!-- md-icon>settings_backup_restore</md-icon> -->
+      <span>Update</span>
+    </button>
+  </td>
+</tr>
+
+</table>

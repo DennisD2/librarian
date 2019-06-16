@@ -4,6 +4,10 @@
   <!-- md-icon>settings_backup_restore</md-icon> -->
   <span>Create new document</span>
 </button>
+<button (click)="categories()" class="btn btn-primary">
+  <!-- md-icon>settings_backup_restore</md-icon> -->
+  <span>Manage categories</span>
+</button>
 
 <h2>Documents</h2>
 <table class="xdocs">
@@ -19,7 +23,8 @@
   <tr *ngFor="let xdoc of xdocs; let i = index">
     <td>
       <span class="xdoc">{{i}}</span>
-    </td>    <td>
+    </td>
+    <td>
       <span class="xdoc">{{xdoc.title}}</span>
     </td>
     <td>

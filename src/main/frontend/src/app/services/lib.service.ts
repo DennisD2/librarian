@@ -4,6 +4,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 import { XDocument } from '../model/XDocument';
+import {XCategory} from "../model/XCategory";
 
 
 @Injectable({
@@ -11,8 +12,8 @@ import { XDocument } from '../model/XDocument';
 })
 export class LibService {
   private baseUrl: string = 'http://localhost:8080';
-  //private documentUrl: string = this.baseUrl + '/documents';
-  private documentUrl: string = this.baseUrl + '/document';
+  private documentUrl: string = this.baseUrl + '/documents';
+  private categoryUrl: string = this.baseUrl + '/categories';
 
   constructor(protected http:  HttpClient) {
   }
@@ -37,7 +38,7 @@ export class LibService {
     console.log('READALL service URL ' + serviceUrl);
     return this.http.get<XDocument[]>(serviceUrl)
          /*.pipe(map((data: any) => { console.log('Service call result: ' + data); return data._embedded.documents;}))*/
-        .pipe(map((data: any) => { console.log('Service call result: ' + data); return data._embedded.xdocument;}))
+        .pipe(map((data: any) => { console.log('Service call result: ' + data); return data._embedded.documents;}))
         .pipe(catchError((e: any) => this.handleError(e)));
   }
 
@@ -77,6 +78,20 @@ export class LibService {
         .pipe(catchError((e: any) => this.handleError(e)));
   }
 
+  // Get ALL categories
+  public getAllCategories() : Observable<XCategory[]> {
+    const serviceUrl =  this.categoryUrl;
+    console.log('READ ALL CATEGORIES service URL ' + serviceUrl);
+
+    return this.http.get<XCategory[]>(serviceUrl)
+        .pipe(map((data: any) => {
+          console.log('GET CATEGORIES Service call result: ' + data._embedded.categories);
+          return data._embedded.categories;
+        }))
+        .pipe(catchError((e: any) => this.handleError(e)));
+  }
+
+
   // Get categories of a document
   public getCategories(doc: XDocument) : Observable<string[]> {
     // console.log(doc._links['categories'].href);
@@ -86,9 +101,9 @@ export class LibService {
     // Map complex returned JSON to simple string array.
     return this.http.get<string[]>(serviceUrl)
         .pipe(map((data: any) => {
-          console.log('GET CATEGORIES Service call result: ' + data._embedded.category);
+          console.log('GET CATEGORIES Service call result: ' + data._embedded.categories);
           let cats : string[] = [];
-          data._embedded.category.forEach( cat => cats.push(cat.category));
+          data._embedded.categories.forEach( cat => cats.push(cat.category));
           return cats;
         }))
         .pipe(catchError((e: any) => this.handleError(e)));

@@ -14,6 +14,7 @@ import { DocumentCreateComponent } from './views/document/create/document-create
 import { DocumentUpdateComponent } from './views/document/update/document-update.component';
 import { DocumentListComponent } from './views/document/list/document-list.component';
 import { DocumentDeleteComponent } from './views/document/delete/document-delete.component';
+import { CategoryListComponent } from './views/category/category-list/category-list.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DocumentDeleteComponent } from './views/document/delete/document-delete
     DocumentUpdateComponent,
     DocumentListComponent,
     DocumentDeleteComponent,
+    CategoryListComponent,
   ],
   imports: [
     BrowserModule,

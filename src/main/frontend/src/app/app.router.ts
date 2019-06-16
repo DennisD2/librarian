@@ -5,11 +5,18 @@ import { DocumentListComponent} from "./views/document/list/document-list.compon
 import { DocumentCreateComponent } from "./views/document/create/document-create.component";
 import { DocumentDeleteComponent } from "./views/document/delete/document-delete.component";
 
-// Route Configuration.
+import {CategoryListComponent} from "./views/category/category-list/category-list.component";
+
+// Router configuration.
 export const routes: Routes = [
-    { path: 'create', component: DocumentCreateComponent },
-    { path: 'update/:id', component: DocumentUpdateComponent },
-    { path: 'delete/:id', component: DocumentDeleteComponent },
-    { path: 'list', component: DocumentListComponent },
-    { path: '', redirectTo: 'list', pathMatch: 'full' },
+    { path: 'doc/create', component: DocumentCreateComponent },
+    { path: 'doc/update/:id', component: DocumentUpdateComponent },
+    { path: 'doc/delete/:id', component: DocumentDeleteComponent },
+    { path: 'doc/list', component: DocumentListComponent },
+
+    { path: 'cat/create', component: CategoryListComponent },
+    { path: 'cat/list', component: CategoryListComponent },
+    { path: 'cat/update/:id', component: CategoryListComponent },
+
+    { path: '', redirectTo: 'doc/list', pathMatch: 'full' },
 ];
