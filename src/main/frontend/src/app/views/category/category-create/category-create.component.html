@@ -1,3 +1,13 @@
-<p>
-  category-create works!
-</p>
+<h2>Create Category</h2>
+
+Title: <input type="text" id="title2" size="30" [(ngModel)]="cat.category">
+
+<button (click)="create()" class="btn btn-primary">
+  <!-- md-icon>settings_backup_restore</md-icon> -->
+  <span>Create</span>
+</button>
+
+<button (click)="cancel_view()" class="btn btn-primary">
+  <!-- md-icon>settings_backup_restore</md-icon> -->
+  <span>Cancel</span>
+</button>

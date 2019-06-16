@@ -8,6 +8,7 @@ import {DocumentDeleteComponent} from "./views/document/delete/document-delete.c
 import {CategoryCreateComponent} from "./views/category/category-create/category-create.component";
 import {CategoryUpdateComponent} from "./views/category/category-update/category-update.component";
 import {CategoryListComponent} from "./views/category/category-list/category-list.component";
+import {CategoryDeleteComponent} from "./views/category/category-delete/category-delete.component";
 
 // Router configuration.
 export const routes: Routes = [
@@ -19,6 +20,7 @@ export const routes: Routes = [
     {path: 'cat/create', component: CategoryCreateComponent},
     {path: 'cat/update/:id', component: CategoryUpdateComponent},
     {path: 'cat/list', component: CategoryListComponent},
+    {path: 'cat/delete', component: CategoryDeleteComponent},
 
     {path: '', redirectTo: 'doc/list', pathMatch: 'full'},
 ];
