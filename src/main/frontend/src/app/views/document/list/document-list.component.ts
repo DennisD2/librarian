@@ -50,7 +50,8 @@ export class DocumentListComponent implements OnInit {
     }
 
     public categories(): void {
-        this.router.navigateByUrl(this.urlPrefix + 'cat/list');
+        // Category handling
+        this.router.navigateByUrl('cat/list');
     }
 
     // Calculate remote id from self URL string

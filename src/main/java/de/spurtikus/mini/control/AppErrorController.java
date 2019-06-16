@@ -11,6 +11,6 @@ public class AppErrorController implements ErrorController {
     @RequestMapping(value="/error", produces={"text/html"})
     @ResponseBody
     public String getErrorPath() {
-        return "<h3>No Mapping Found<h3>";
+        return "<h3>No Mapping Found!<h3><a href=\"/\">Back to starting page</a>";
     }
 }

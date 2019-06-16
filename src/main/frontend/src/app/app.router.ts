@@ -20,7 +20,7 @@ export const routes: Routes = [
     {path: 'cat/create', component: CategoryCreateComponent},
     {path: 'cat/update/:id', component: CategoryUpdateComponent},
     {path: 'cat/list', component: CategoryListComponent},
-    {path: 'cat/delete', component: CategoryDeleteComponent},
+    {path: 'cat/delete/:id', component: CategoryDeleteComponent},
 
     {path: '', redirectTo: 'doc/list', pathMatch: 'full'},
 ];

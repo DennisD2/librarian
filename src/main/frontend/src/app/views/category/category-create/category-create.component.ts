@@ -25,8 +25,8 @@ export class CategoryCreateComponent implements OnInit {
     }
 
     public cancel_view(): void {
-        console.log("cancel create.")
-        this.router.navigateByUrl('');
+        console.log("cancel create.");
+        this.router.navigateByUrl('cat/list');
     }
 
     public create(): void {

@@ -34,8 +34,8 @@ export class CategoryUpdateComponent implements OnInit {
     }
 
     public cancel_view(): void {
-        console.log("cancel update.")
-        this.router.navigateByUrl('');
+        console.log("cancel update.");
+        this.router.navigateByUrl('cat/list');
     }
 
     public update(): void {
@@ -45,6 +45,6 @@ export class CategoryUpdateComponent implements OnInit {
             self.cat = doc;
             console.log("updated doc: " + JSON.stringify(self.cat));
         });
-        this.router.navigateByUrl('');
+        this.router.navigateByUrl('cat/list');
     }
 }
