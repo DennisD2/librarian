@@ -1,0 +1,15 @@
+<h2>Category Update</h2>
+
+Id: <span>{{cat.id}} </span>
+
+Title: <input type="text" id="category" size="30" [(ngModel)]="cat.category"/>
+
+<button (click)="update()" class="btn btn-primary">
+    <!-- md-icon>settings_backup_restore</md-icon> -->
+    <span>Update</span>
+</button>
+
+<button (click)="cancel_view()" class="btn btn-primary">
+    <!-- md-icon>settings_backup_restore</md-icon> -->
+    <span>Cancel</span>
+</button>

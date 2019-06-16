@@ -1,21 +1,18 @@
 import {Component, OnInit} from '@angular/core';
-import {Router, ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {LibService} from "../../../services/lib.service";
-import {XDocument} from "../../../model/XDocument";
+import {XCategory} from "../../../model/XCategory";
 
 @Component({
-    selector: 'app-update',
-    templateUrl: './document-update.component.html',
-    styleUrls: ['./document-update.component.css']
+    selector: 'app-category-update',
+    templateUrl: './category-update.component.html',
+    styleUrls: ['./category-update.component.css']
 })
-export class DocumentUpdateComponent implements OnInit {
-    xdoc: XDocument = new class implements XDocument {
+export class CategoryUpdateComponent implements OnInit {
+    cat: XCategory = new class implements XCategory {
         id: '';
-        location: '';
-        publishedYear: 0;
-        title: '';
+        category: '';
         _links: null;
-        resolvedCategories: [];
     };
 
     constructor(protected route: ActivatedRoute,
@@ -27,10 +24,10 @@ export class DocumentUpdateComponent implements OnInit {
         let id = this.route.snapshot.paramMap.get('id');
         console.log("Id from param map: " + id);
         let self = this;
-        this.libService.getDocument(id).subscribe(doc => {
-            self.xdoc = doc;
-            console.log("doc: " + JSON.stringify(self.xdoc));
-            self.xdoc.id = id;
+        this.libService.getCategory(id).subscribe(cat => {
+            self.cat = cat;
+            console.log("doc: " + JSON.stringify(self.cat));
+            self.cat.id = id;
             //console.log("doc1: " + JSON.stringify(self.xdoc._links['self'].href));
         });
     }
@@ -43,11 +40,10 @@ export class DocumentUpdateComponent implements OnInit {
     public update(): void {
         console.log("update!")
         let self = this;
-        this.libService.updateOrCreateDocument(self.xdoc).subscribe(doc => {
-            self.xdoc = doc;
-            console.log("updated doc: " + JSON.stringify(self.xdoc));
+        this.libService.updateOrCreateCategory(self.cat).subscribe(doc => {
+            self.cat = doc;
+            console.log("updated doc: " + JSON.stringify(self.cat));
         });
         this.router.navigateByUrl('');
     }
-
 }

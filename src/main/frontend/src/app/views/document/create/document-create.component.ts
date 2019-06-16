@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 
 import {XDocument} from "../../../model/XDocument";
@@ -6,42 +6,43 @@ import {XDocument} from "../../../model/XDocument";
 import {LibService} from "../../../services/lib.service";
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './document-create.component.html',
-  styleUrls: ['./document-create.component.css']
+    selector: 'app-create',
+    templateUrl: './document-create.component.html',
+    styleUrls: ['./document-create.component.css']
 })
 export class DocumentCreateComponent implements OnInit {
-  xdoc: XDocument = new class implements XDocument {
-    id: '';
-    location: '';
-    publishedYear: 0;
-    title: '';
-    _links: null;
-    resolvedCategories: [];
-  };
+    xdoc: XDocument = new class implements XDocument {
+        id: '';
+        location: '';
+        publishedYear: 0;
+        title: '';
+        _links: null;
+        resolvedCategories: [];
+    };
 
-  constructor(protected route: ActivatedRoute,
-              protected router: Router,
-              protected libService: LibService) { }
+    constructor(protected route: ActivatedRoute,
+                protected router: Router,
+                protected libService: LibService) {
+    }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  public cancel_view(): void {
-    console.log("cancel create.")
-    this.router.navigateByUrl('');
-  }
+    public cancel_view(): void {
+        console.log("cancel create.")
+        this.router.navigateByUrl('');
+    }
 
-  public create(): void {
-    console.log("create: " + JSON.stringify(this.xdoc));
-    let self = this;
-    // create is 'update and id==0'
-    self.xdoc.id = '0';
-    this.libService.updateOrCreateDocument(self.xdoc).subscribe(doc => {
-      self.xdoc = doc;
-      console.log("created doc: " + JSON.stringify(self.xdoc));
-    });
-    this.router.navigateByUrl('' );
-  }
+    public create(): void {
+        console.log("create: " + JSON.stringify(this.xdoc));
+        let self = this;
+        // create is 'update and id==0'
+        self.xdoc.id = '0';
+        this.libService.updateOrCreateDocument(self.xdoc).subscribe(doc => {
+            self.xdoc = doc;
+            console.log("created doc: " + JSON.stringify(self.xdoc));
+        });
+        this.router.navigateByUrl('');
+    }
 
 }

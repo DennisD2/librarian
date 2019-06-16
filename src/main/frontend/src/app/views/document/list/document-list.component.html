@@ -1,56 +1,54 @@
-
-
 <button (click)="create()" class="btn btn-primary">
-  <!-- md-icon>settings_backup_restore</md-icon> -->
-  <span>Create new document</span>
+    <!-- md-icon>settings_backup_restore</md-icon> -->
+    <span>Create new document</span>
 </button>
 <button (click)="categories()" class="btn btn-primary">
-  <!-- md-icon>settings_backup_restore</md-icon> -->
-  <span>Manage categories</span>
+    <!-- md-icon>settings_backup_restore</md-icon> -->
+    <span>Manage categories</span>
 </button>
 
 <h2>Documents</h2>
 <table class="xdocs">
-  <tr>
-    <th>Id</th>
-    <th>Title</th>
-    <th>Year</th>
-    <th>Link</th>
-    <th>Selflink</th>
-    <th>Categories</th>
-    <th>Operations</th>
-  </tr>
-  <tr *ngFor="let xdoc of xdocs; let i = index">
-    <td>
-      <span class="xdoc">{{i}}</span>
-    </td>
-    <td>
-      <span class="xdoc">{{xdoc.title}}</span>
-    </td>
-    <td>
-      {{xdoc.publishedYear}}
-    </td>
-    <td>
-      <a href="{{xdoc.location}}">LINK</a>
-    </td>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Link</th>
+        <th>Selflink</th>
+        <th>Categories</th>
+        <th>Operations</th>
+    </tr>
+    <tr *ngFor="let xdoc of xdocs; let i = index">
+        <td>
+            <span class="xdoc">{{i}}</span>
+        </td>
+        <td>
+            <span class="xdoc">{{xdoc.title}}</span>
+        </td>
+        <td>
+            {{xdoc.publishedYear}}
+        </td>
+        <td>
+            <a href="{{xdoc.location}}">LINK</a>
+        </td>
 
-    <td>
-     <a href="{{xdoc._links.self.href}}">SELF</a>
-    </td>
+        <td>
+            <a href="{{xdoc._links.self.href}}">SELF</a>
+        </td>
 
-    <!-- list all categories -->
-    <td>
-      <span *ngFor="let cat of xdoc.resolvedCategories;"><span>[{{cat}}]&nbsp;</span></span>
-    </td>
+        <!-- list all categories -->
+        <td>
+            <span *ngFor="let cat of xdoc.resolvedCategories;"><span>[{{cat}}]&nbsp;</span></span>
+        </td>
 
-    <td>
-      <button (click)="delete(i)" class="btn btn-primary">
-        <!-- md-icon>settings_backup_restore</md-icon> -->
-        <span>Delete</span>
-      </button>
-      <button (click)="update(i)" class="btn btn-primary">
-        <!-- md-icon>settings_backup_restore</md-icon> -->
-        <span>Update</span>
-      </button>
-    </td>
+        <td>
+            <button (click)="delete(i)" class="btn btn-primary">
+                <!-- md-icon>settings_backup_restore</md-icon> -->
+                <span>Delete</span>
+            </button>
+            <button (click)="update(i)" class="btn btn-primary">
+                <!-- md-icon>settings_backup_restore</md-icon> -->
+                <span>Update</span>
+            </button>
+        </td>
 </table>
