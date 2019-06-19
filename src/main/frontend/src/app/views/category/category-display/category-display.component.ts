@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import {XDocument} from "../../../model/XDocument";
 
 @Component({
   selector: 'app-category-display',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-display.component.css']
 })
 export class CategoryDisplayComponent implements OnInit {
-
+  @Input() doc: XDocument;
   constructor() { }
 
   ngOnInit() {

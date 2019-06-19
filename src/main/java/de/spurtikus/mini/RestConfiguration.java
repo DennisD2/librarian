@@ -8,6 +8,7 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import java.util.concurrent.TimeUnit;
 
+// CORS configuration.
 // Simple @CrossOrigin annotation did not work.
 // See https://stackoverflow.com/questions/31724994/spring-data-rest-and-cors/42403956#42403956
 

@@ -38,7 +38,8 @@
 
         <!-- list all categories -->
         <td>
-            <span *ngFor="let cat of xdoc.resolvedCategories;"><span>[{{cat}}]&nbsp;</span></span>
+            <!-- component for category display -->
+            <app-category-display [doc]="xdoc"></app-category-display>
         </td>
 
         <td>
