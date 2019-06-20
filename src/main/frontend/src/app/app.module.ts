@@ -21,6 +21,9 @@ import {CategoryDeleteComponent} from './views/category/category-delete/category
 import {CategoryDisplayComponent} from './views/category/category-display/category-display.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MaterialModule } from './material/material.module';
+import {FlexLayoutModule} from '@angular/flex-layout';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -39,7 +42,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         HttpClientModule,
         RouterModule.forRoot(routes, {enableTracing: true}),
         FormsModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        MaterialModule,
+        FlexLayoutModule
     ],
     providers: [
         LibService,
