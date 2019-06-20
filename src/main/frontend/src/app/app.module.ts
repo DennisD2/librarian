@@ -19,6 +19,7 @@ import {CategoryUpdateComponent} from './views/category/category-update/category
 import {CategoryCreateComponent} from './views/category/category-create/category-create.component';
 import {CategoryDeleteComponent} from './views/category/category-delete/category-delete.component';
 import {CategoryDisplayComponent} from './views/category/category-display/category-display.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import {CategoryDisplayComponent} from './views/category/category-display/catego
         BrowserModule,
         HttpClientModule,
         RouterModule.forRoot(routes, {enableTracing: true}),
-        FormsModule
+        FormsModule,
+        BrowserAnimationsModule
     ],
     providers: [
         LibService,
