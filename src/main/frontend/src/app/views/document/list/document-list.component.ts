@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {XDocument} from "../../../model/XDocument";
 import {LibService} from "../../../services/lib.service";
+import {Observable} from "rxjs";
+import {DataSource} from "@angular/cdk/table";
 
 @Component({
     selector: 'app-list',
@@ -13,11 +15,11 @@ export class DocumentListComponent implements OnInit {
     urlPrefix: string = 'doc';
     xdocs: XDocument[] = null;
 
+    displayedColumns = ['title', 'publishedYear', 'location', 'categories', 'actions'];
+    dataSource = new DocumentDataSource(this.libService);
+
     constructor(protected libService: LibService,
                 protected router: Router) {
-    }
-
-    ngOnInit() {
         const self = this;
         this.libService.getAllDocuments().subscribe(docs => {
             self.xdocs = docs;
@@ -25,10 +27,14 @@ export class DocumentListComponent implements OnInit {
         });
     }
 
+    ngOnInit() {
+    }
+
     public loadCategories(): void {
         this.xdocs.forEach(xdoc => {
             this.libService.getCategories(xdoc).subscribe(categories => {
                 xdoc.resolvedCategories = categories;
+                console.log("resolvedCategories for " + xdoc.title + ": " + xdoc.resolvedCategories);
             })
         });
     }
@@ -37,21 +43,24 @@ export class DocumentListComponent implements OnInit {
         this.router.navigateByUrl(this.urlPrefix + '/create');
     }
 
-    public update(index: number): void {
-        console.log('id from button event: ' + index);
-        let remote_id = this.getRemoteId(this.xdocs[index]._links['self'].href);
+    public update(xdoc: XDocument): void {
+        let remote_id = this.getRemoteId(xdoc._links['self'].href);
         this.router.navigateByUrl(this.urlPrefix + '/update/' + remote_id);
     }
 
-    public delete(index: number): void {
-        console.log('id from button event: ' + index);
-        let remote_id = this.getRemoteId(this.xdocs[index]._links['self'].href);
+    public delete(xdoc: XDocument): void {
+        let remote_id = this.getRemoteId(xdoc._links['self'].href);
         this.router.navigateByUrl(this.urlPrefix + '/delete/' + remote_id);
     }
 
     public categories(): void {
         // Category handling
         this.router.navigateByUrl('cat/list');
+    }
+
+    public rowClicked(xdoc: XDocument): void {
+        let remote_id = this.getRemoteId(xdoc._links['self'].href);
+        this.router.navigateByUrl(this.urlPrefix + '/update/' + remote_id);
     }
 
     // Calculate remote id from self URL string
@@ -62,4 +71,17 @@ export class DocumentListComponent implements OnInit {
         return id;
     }
 
+}
+
+export class DocumentDataSource extends DataSource<any> {
+    constructor(private dataService: LibService) {
+        super();
+    }
+
+    connect(): Observable<XDocument[]> {
+        return this.dataService.getAllDocuments();
+    }
+
+    disconnect() {
+    }
 }

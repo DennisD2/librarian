@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {XDocument} from "../../../model/XDocument";
+import {LibService} from "../../../services/lib.service";
 
 @Component({
   selector: 'app-category-display',
@@ -8,9 +9,13 @@ import {XDocument} from "../../../model/XDocument";
 })
 export class CategoryDisplayComponent implements OnInit {
   @Input() doc: XDocument;
-  constructor() { }
+  constructor(protected libService: LibService) { }
 
   ngOnInit() {
+      this.libService.getCategories(this.doc).subscribe(categories => {
+        this.doc.resolvedCategories = categories;
+        console.log("resolvedCategories for " + this.doc.title + ": " + this.doc.resolvedCategories);
+      })
   }
 
 }
