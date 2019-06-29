@@ -27,7 +27,9 @@
 
     <ng-container matColumnDef="location">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Link </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{row.location}} </mat-cell>
+        <mat-cell *matCellDef="let row">
+            <a href="{{row.location}}"><small>{{row.location}}</small></a>
+        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="categories">
