@@ -15,6 +15,7 @@ export class DocumentUpdateComponent implements OnInit {
         location: '';
         publishedYear: 0;
         title: '';
+        authors: '';
         _links: null;
         resolvedCategories: [];
     };

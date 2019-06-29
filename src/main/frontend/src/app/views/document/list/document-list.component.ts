@@ -15,7 +15,7 @@ export class DocumentListComponent implements OnInit {
     urlPrefix: string = 'doc';
     xdocs: XDocument[] = null;
 
-    displayedColumns = ['title', 'publishedYear', 'location', 'categories', 'actions'];
+    displayedColumns = ['title', 'authors', 'publishedYear', 'location', 'categories', 'actions'];
     dataSource = new DocumentDataSource(this.libService);
 
     constructor(protected libService: LibService,
@@ -23,20 +23,10 @@ export class DocumentListComponent implements OnInit {
         const self = this;
         this.libService.getAllDocuments().subscribe(docs => {
             self.xdocs = docs;
-            self.loadCategories();
         });
     }
 
     ngOnInit() {
-    }
-
-    public loadCategories(): void {
-        this.xdocs.forEach(xdoc => {
-            this.libService.getCategories(xdoc).subscribe(categories => {
-                xdoc.resolvedCategories = categories;
-                console.log("resolvedCategories for " + xdoc.title + ": " + xdoc.resolvedCategories);
-            })
-        });
     }
 
     public create(): void {

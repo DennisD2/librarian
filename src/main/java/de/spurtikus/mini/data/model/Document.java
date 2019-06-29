@@ -20,9 +20,8 @@ public class Document implements Serializable {
     // Local storage location; relative path to some base directory
     private String location;
 
-    // List of Authors
-    @OneToMany
-    private Set<Author> authors;
+    // Authors
+    private String authors;
 
     // List of Categories
     @OneToMany
@@ -61,11 +60,11 @@ public class Document implements Serializable {
         this.publishedYear = publishedYear;
     }
 
-    public Set<Author> getAuthors() {
+    public String getAuthors() {
         return authors;
     }
 
-    public void setAuthors(Set<Author> authors) {
+    public void setAuthors(String authors) {
         this.authors = authors;
     }
 

@@ -17,6 +17,7 @@ export class DocumentCreateComponent implements OnInit {
         location: '';
         publishedYear: 0;
         title: '';
+        authors: '';
         _links: null;
         resolvedCategories: [];
     };

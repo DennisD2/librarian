@@ -15,6 +15,11 @@
         <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="authors">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> Author(s) </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{row.authors}} </mat-cell>
+    </ng-container>
+
     <ng-container matColumnDef="publishedYear">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Published </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.publishedYear}} </mat-cell>
