@@ -18,7 +18,6 @@ export class DocumentUpdateComponent implements OnInit {
         _links: null;
         resolvedCategories: [];
     };
-    pdfSrc = "/assets/e1497_e1498_owners_guide.pdf";
 
     constructor(protected route: ActivatedRoute,
                 protected router: Router,
