@@ -7,6 +7,12 @@ Year: <input type="number" name="publishedYear" maxlength="4" [(ngModel)]="xdoc.
 Authors: <input type="text" name="authors"/>
 Categories:  <input type="text" name="authors"/>
 
+<p></p>
+
+Location: <input type="text" id="location" size="80" [(ngModel)]="xdoc.location"/>
+
+<p></p>
+
 <button (click)="create()" class="btn btn-primary">
     <i class="material-icons">create</i>
     <span>Create</span>
@@ -16,3 +22,5 @@ Categories:  <input type="text" name="authors"/>
     <i class="material-icons">cancel</i>
     <span>Cancel</span>
 </button>
+
+<app-document-display [docUrl]="xdoc.location" [page]="1" [rotation]="0" [zoom]="0.5"></app-document-display>

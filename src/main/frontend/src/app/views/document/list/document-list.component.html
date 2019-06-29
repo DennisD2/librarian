@@ -9,7 +9,7 @@
 
 <h2>{{title}}</h2>
 
-<mat-table [dataSource]="dataSource">
+<mat-table [dataSource]="dataSource" >
     <ng-container matColumnDef="title">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
@@ -44,8 +44,8 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns" (click)="rowClicked(row)"></mat-row>
 </mat-table>
-<mat-paginator [length]="5" [pageSize]="3" [pageSizeOptions]="[5, 10, 25]">
-</mat-paginator>
+<!-- <mat-paginator [length]="5" [pageSize]="3" [pageSizeOptions]="[5, 10, 25]">
+</mat-paginator> -->
 
 <!-- <table class="xdocs" width="100%">
     <tr>
