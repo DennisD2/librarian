@@ -1,0 +1,31 @@
+<div>
+    <button (click)="previousPage()" class="btn btn-primary">
+        <!-- md-icon>settings_backup_restore</md-icon> -->
+        <span>Previous</span>
+    </button>
+
+    <button (click)="nextPage()" class="btn btn-primary">
+        <!-- md-icon>settings_backup_restore</md-icon> -->
+        <span>Next</span>
+    </button>
+
+    <button (click)="rotateRight()" class="btn btn-primary">
+        <!-- md-icon>settings_backup_restore</md-icon> -->
+        <span>Rotate</span>
+    </button>
+
+    <button (click)="zoomIn()" class="btn btn-primary">
+        <!-- md-icon>settings_backup_restore</md-icon> -->
+        <span>Zoom in</span>
+    </button>
+
+    <button (click)="zoomOut()" class="btn btn-primary">
+        <!-- md-icon>settings_backup_restore</md-icon> -->
+        <span>Zoom out</span>
+    </button>
+
+    <pdf-viewer [src]="docUrl" [original-size]="false" [show-all]="false" [(page)]="page" [rotation]="rotation"
+                [zoom]="zoom">
+    </pdf-viewer>
+
+</div>

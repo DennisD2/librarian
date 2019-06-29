@@ -26,7 +26,9 @@
     "rxjs": "^6.5.2",
     "rxjs-compat": "^6.5.2",
     "tslib": "^1.9.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "ng2-pdf-viewer": "5.2.2",
+    "pdfjs-dist": "2.0.943"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.800.0",
@@ -47,6 +49,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.4.5"
+    "typescript": "~3.4.5",
+    "@types/pdfjs-dist": "0.1.2"
   }
 }

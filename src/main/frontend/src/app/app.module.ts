@@ -24,6 +24,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material/material.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { DocumentDisplayComponent } from './views/document/document-display/document-display.component';
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -36,6 +39,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
         CategoryCreateComponent,
         CategoryDeleteComponent,
         CategoryDisplayComponent,
+        DocumentDisplayComponent,
     ],
     imports: [
         BrowserModule,
@@ -44,7 +48,8 @@ import {FlexLayoutModule} from '@angular/flex-layout';
         FormsModule,
         BrowserAnimationsModule,
         MaterialModule,
-        FlexLayoutModule
+        FlexLayoutModule,
+        PdfViewerModule
     ],
     providers: [
         LibService,
