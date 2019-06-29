@@ -1,9 +1,9 @@
 <button (click)="create()" class="btn btn-primary">
-    <!-- md-icon>settings_backup_restore</md-icon> -->
+    <i class="material-icons">create</i>
     <span>Create new document</span>
 </button>
 <button (click)="categories()" class="btn btn-primary">
-    <!-- md-icon>settings_backup_restore</md-icon> -->
+    <i class="material-icons">ballot</i>
     <span>Manage categories</span>
 </button>
 
@@ -35,8 +35,8 @@
     <ng-container matColumnDef="actions">
         <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
         <mat-cell *matCellDef="let row" >
-            <button mat-button (click)="update(row)">Update</button>
-            <button mat-button (click)="delete(row)">Delete</button>
+            <button mat-button (click)="update(row)"><i class="material-icons">edit</i>Update</button>
+            <button mat-button (click)="delete(row)"><i class="material-icons">delete_forever</i>Delete</button>
         </mat-cell>
     </ng-container>
 
