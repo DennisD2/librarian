@@ -17,9 +17,8 @@ import {
         MatIconModule,
         MatListModule,
         MatChipsModule,
-        MatTableModule,
-        MatPaginatorModule,
-        MatFormFieldModule, MatInputModule
+        MatTableModule, MatPaginatorModule,
+        MatFormFieldModule, MatInputModule,
     ],
     exports: [
         MatSidenavModule,

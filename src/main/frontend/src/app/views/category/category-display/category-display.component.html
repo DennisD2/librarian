@@ -1,15 +1,12 @@
 <div *ngIf="!editMode">
+    <!-- list categories for object -->
     <mat-chip-list *ngFor="let cat of doc.resolvedCategories">
         <mat-chip>{{cat}}</mat-chip>
     </mat-chip-list>
 </div>
 
 <div *ngIf="editMode">
-    <!--<mat-form-field>
-        <mat-chip-list #chipList *ngFor="let cat of doc.resolvedCategories">
-            <mat-chip [removable]="true" (remove)="remove(cat)">{{cat}}</mat-chip>
-        </mat-chip-list>
-    </mat-form-field> -->
+    <!-- list all categories and allow to add/remove categories for object -->
     <mat-chip-list *ngFor="let cat of allCategories">
         <mat-chip [removable]="true" (removed)="removeCategory(cat.category)"
                   [selectable]="true" (click)="addCategory(cat.category)"

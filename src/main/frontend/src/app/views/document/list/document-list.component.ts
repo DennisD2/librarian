@@ -2,8 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {XDocument} from "../../../model/XDocument";
 import {LibService} from "../../../services/lib.service";
-import {Observable} from "rxjs";
-import {DataSource} from "@angular/cdk/table";
+import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
 
 @Component({
     selector: 'app-list',
@@ -13,20 +12,27 @@ import {DataSource} from "@angular/cdk/table";
 export class DocumentListComponent implements OnInit {
     title: string = 'List Documents';
     urlPrefix: string = 'doc';
-    xdocs: XDocument[] = null;
 
     displayedColumns = ['title', 'authors', 'publishedYear', 'location', 'categories', 'actions'];
-    dataSource = new DocumentDataSource(this.libService);
+    xdocs: XDocument[] = [];
+    dataSource = new MatTableDataSource(this.xdocs);
+    @ViewChild(MatPaginator, null) paginator: MatPaginator;
+    //@ViewChild(MatSort, null) sort: MatSort;
 
     constructor(protected libService: LibService,
                 protected router: Router) {
         const self = this;
         this.libService.getAllDocuments().subscribe(docs => {
+            //console.log('returned from getAllDocuments()');
+            //console.log(JSON.stringify(docs));
             self.xdocs = docs;
+            this.dataSource.data = this.xdocs;
         });
     }
 
     ngOnInit() {
+
+        this.dataSource.paginator = this.paginator;
     }
 
     public create(): void {
@@ -63,15 +69,3 @@ export class DocumentListComponent implements OnInit {
 
 }
 
-export class DocumentDataSource extends DataSource<any> {
-    constructor(private dataService: LibService) {
-        super();
-    }
-
-    connect(): Observable<XDocument[]> {
-        return this.dataService.getAllDocuments();
-    }
-
-    disconnect() {
-    }
-}

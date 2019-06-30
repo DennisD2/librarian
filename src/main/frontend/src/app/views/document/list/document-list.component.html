@@ -51,8 +51,7 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns" (click)="rowClicked(row)"></mat-row>
 </mat-table>
-<!-- <mat-paginator [length]="5" [pageSize]="3" [pageSizeOptions]="[5, 10, 25]">
-</mat-paginator> -->
+<mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
 
 <!-- <table class="xdocs" width="100%">
     <tr>
