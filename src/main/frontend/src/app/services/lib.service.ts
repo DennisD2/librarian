@@ -105,9 +105,9 @@ export class LibService {
 
 
     // Get categories of a document
-    public getCategories(doc: XDocument): Observable<string[]> {
-        // console.log(doc._links['categories'].href);
-        const serviceUrl = doc._links['categories'].href;
+    public getCategories(xdoc: XDocument): Observable<string[]> {
+        console.log('Document: ' + JSON.stringify(xdoc));
+        const serviceUrl = xdoc._links['categories'].href;
         console.log('GET CATEGORIES service URL ' + serviceUrl);
 
         // Map complex returned JSON to simple string array.

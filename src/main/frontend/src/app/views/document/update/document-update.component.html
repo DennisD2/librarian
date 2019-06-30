@@ -7,12 +7,13 @@ Title: <input type="text" id="title2" size="30" [(ngModel)]="xdoc.title"/>
 Year: <input type="number" name="publishedYear" maxlength="4" [(ngModel)]="xdoc.publishedYear"/>
 
 Authors: <input type="text" name="authors" [(ngModel)]="xdoc.authors"/>
-Categories:  <input type="text" name="cats"/>
-
 <p></p>
 
 Location: <input type="text" id="location" size="80" [(ngModel)]="xdoc.location"/>
+<p></p>
 
+Categories:
+<app-category-display [doc]="xdoc" [editMode]="true"></app-category-display>
 <p></p>
 
 <button (click)="update()" class="btn btn-primary">

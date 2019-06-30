@@ -34,6 +34,11 @@ export class DocumentUpdateComponent implements OnInit {
             console.log("doc: " + JSON.stringify(self.xdoc));
             self.xdoc.id = id;
             //console.log("doc1: " + JSON.stringify(self.xdoc._links['self'].href));
+            // TODO: remove the service call; curently I need it because in update-page
+            // TODO: doc is null in category's OnInit() for unknown reason
+            this.libService.getCategories(self.xdoc).subscribe(categories => {
+                self.xdoc.resolvedCategories = categories;
+            })
         });
     }
 

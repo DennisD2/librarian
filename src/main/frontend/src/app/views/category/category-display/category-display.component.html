@@ -1,3 +1,21 @@
-<mat-chip-list *ngFor="let cat of doc.resolvedCategories;">
-    <mat-chip>{{cat}}</mat-chip>
-</mat-chip-list>
+<div *ngIf="!editMode">
+    <mat-chip-list *ngFor="let cat of doc.resolvedCategories">
+        <mat-chip>{{cat}}</mat-chip>
+    </mat-chip-list>
+</div>
+
+<div *ngIf="editMode">
+    <!--<mat-form-field>
+        <mat-chip-list #chipList *ngFor="let cat of doc.resolvedCategories">
+            <mat-chip [removable]="true" (remove)="remove(cat)">{{cat}}</mat-chip>
+        </mat-chip-list>
+    </mat-form-field> -->
+    <mat-chip-list *ngFor="let cat of allCategories">
+        <mat-chip [removable]="true" (removed)="removeCategory(cat.category)"
+                  [selectable]="true" (click)="addCategory(cat.category)"
+                  [selected]="containsCategory(cat.category)">
+            {{cat.category}}
+            <mat-icon matChipRemove *ngIf="containsCategory(cat.category)">cancel</mat-icon>
+        </mat-chip>
+    </mat-chip-list>
+</div>
