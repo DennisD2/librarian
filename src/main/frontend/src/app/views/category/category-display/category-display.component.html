@@ -1,6 +1,6 @@
 <div *ngIf="!editMode">
     <!-- list categories for object -->
-    <mat-chip-list *ngFor="let cat of doc.resolvedCategories">
+    <mat-chip-list *ngFor="let cat of doc.categories">
         <mat-chip>{{cat}}</mat-chip>
     </mat-chip-list>
 </div>

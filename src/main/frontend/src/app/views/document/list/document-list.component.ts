@@ -26,7 +26,7 @@ export class DocumentListComponent implements OnInit {
             //console.log('returned from getAllDocuments()');
             //console.log(JSON.stringify(docs));
             self.xdocs = docs;
-            this.dataSource.data = this.xdocs;
+            self.dataSource.data = self.xdocs;
         });
     }
 

@@ -1,3 +1,10 @@
+import {XLink} from "./XLink";
+
+export interface XCategory {
+    id: string;
+    category: string;
+    _links: XLink[];
+}
 
 /*
 {
@@ -31,11 +38,3 @@
   }
 }
  */
-
-import {XLink} from "./XLink";
-
-export interface XCategory {
-    id: string;
-    category: string;
-    _links: XLink[];
-}

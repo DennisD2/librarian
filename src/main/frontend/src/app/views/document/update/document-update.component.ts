@@ -16,9 +16,10 @@ export class DocumentUpdateComponent implements OnInit {
         publishedYear: 0;
         title: '';
         authors: '';
+        categories: [];
         _links: null;
-        resolvedCategories: [];
     };
+    oldCategories = [];
 
     constructor(protected route: ActivatedRoute,
                 protected router: Router,
@@ -33,12 +34,8 @@ export class DocumentUpdateComponent implements OnInit {
             self.xdoc = doc;
             console.log("doc: " + JSON.stringify(self.xdoc));
             self.xdoc.id = id;
-            //console.log("doc1: " + JSON.stringify(self.xdoc._links['self'].href));
-            // TODO: remove the service call; curently I need it because in update-page
-            // TODO: doc is null in category's OnInit() for unknown reason
-            this.libService.getCategories(self.xdoc).subscribe(categories => {
-                self.xdoc.resolvedCategories = categories;
-            })
+            // initialize array for later comparisation
+            self.oldCategories = doc.categories.map(x => Object.assign({}, x));
         });
     }
 
@@ -49,11 +46,28 @@ export class DocumentUpdateComponent implements OnInit {
 
     public update(): void {
         console.log("update!")
+        console.log("updated doc: " + JSON.stringify(this.xdoc));
+
         let self = this;
         this.libService.updateOrCreateDocument(self.xdoc).subscribe(doc => {
-            self.xdoc = doc;
-            console.log("updated doc: " + JSON.stringify(self.xdoc));
+            console.log("updated doc: " + JSON.stringify(doc));
         });
+        // Check for removed categories
+        this.oldCategories.forEach(oldCat => {
+                if (!(self.xdoc.categories.indexOf(oldCat) > -1)) {
+                    // delete
+                    console.log("Delete cat: " + oldCat);
+                }
+            }
+        );
+        // Check for new categories
+        this.xdoc.categories.forEach(newCat => {
+                if (!(self.oldCategories.indexOf(newCat) > -1)) {
+                    // add
+                    console.log("Add cat: " + newCat);
+                }
+            }
+        );
         this.router.navigateByUrl('');
     }
 

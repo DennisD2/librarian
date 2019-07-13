@@ -4,6 +4,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Set;
 
+import static javax.persistence.CascadeType.ALL;
+
 @Entity
 public class Document implements Serializable {
 
@@ -24,7 +26,7 @@ public class Document implements Serializable {
     private String authors;
 
     // List of Categories
-    @OneToMany
+    @OneToMany(cascade = ALL, orphanRemoval = true)
     private Set<Category> categories;
 
     public Document() {

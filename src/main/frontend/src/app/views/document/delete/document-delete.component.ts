@@ -16,8 +16,8 @@ export class DocumentDeleteComponent implements OnInit {
         publishedYear: 0;
         title: '';
         authors: '';
+        categories: [];
         _links: null;
-        resolvedCategories: [];
     };
 
     constructor(protected route: ActivatedRoute,

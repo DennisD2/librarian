@@ -19,43 +19,36 @@ export class CategoryDisplayComponent implements OnInit {
 
   ngOnInit() {
     if (this.editMode) {
+      // Retrieve all categories
       let self = this;
       self.libService.getAllCategories().subscribe(cats => {
         self.allCategories = cats;
       });
     }
-    if (this.doc == null) {
-      console.log('Cannot get categories now, because this.doc is still null');
-      return;
-    }
-    let self = this;
-    let data = JSON.stringify(this.doc);
-    console.log('POST data: ' + data);
-    self.libService.getCategories(this.doc).subscribe(categories => {
-        self.doc.resolvedCategories = categories;
-        console.log("resolvedCategories for " + self.doc.title + ": " + self.doc.resolvedCategories);
-    })
   }
 
+  /**
+   * Check for a category, if the document has this category.
+   * @param s
+   */
   public containsCategory(s: string) : boolean {
-    if (this.doc == null || this.doc.resolvedCategories == null) {
+    if (this.doc == null || this.doc.categories == null) {
       return false;
     }
-    return (this.doc.resolvedCategories.indexOf(s) > -1);
+    return (this.doc.categories.indexOf(s) > -1);
   }
 
   public removeCategory(s: string) : void {
     console.log("Remove category: " + s);
-    let index = this.doc.resolvedCategories.indexOf(s);
+    let index = this.doc.categories.indexOf(s);
     if (index >= 0) {
-      this.doc.resolvedCategories.splice(index, 1);
+      this.doc.categories.splice(index, 1);
     }
   }
 
   public addCategory(s: string) : void {
     console.log("Add category: " + s);
-      this.doc.resolvedCategories.push(s);
-
+      this.doc.categories.push(s);
   }
 
 }
