@@ -176,10 +176,10 @@ export class LibService {
      */
     public addCategory(doc: XDocument, newCat: string, allCategories: XCategory[]) : Observable<any> {
         const serviceUrl = doc._links['categories'].href;
-        console.log('Category relation service URL: ' + serviceUrl);
+        console.log('Relation service URL: ' + serviceUrl);
         let index = allCategories.findIndex(cat => cat.category == newCat);
         const relatedObject = allCategories[index]._links['self'].href;
-        console.log('POST relation URI: ' + relatedObject);
+        console.log('Relation Post data (a URI): ' + relatedObject);
 
         let headers = new HttpHeaders();
         headers.append('Content-Type', 'text/uri-list');
