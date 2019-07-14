@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
 import {LibService} from "../../../services/lib.service";
 import {XDocument} from "../../../model/XDocument";
+import {XCategory} from "../../../model/XCategory";
 
 @Component({
     selector: 'app-update',
@@ -20,6 +21,9 @@ export class DocumentUpdateComponent implements OnInit {
         _links: null;
     };
     oldCategories = [];
+    newCategories = [];
+
+    allCategories: XCategory[] = null;
 
     constructor(protected route: ActivatedRoute,
                 protected router: Router,
@@ -35,7 +39,13 @@ export class DocumentUpdateComponent implements OnInit {
             console.log("doc: " + JSON.stringify(self.xdoc));
             self.xdoc.id = id;
             // initialize array for later comparisation
-            self.oldCategories = doc.categories.map(x => Object.assign({}, x));
+            self.oldCategories = [];
+            doc.categories.forEach( d => self.oldCategories.push(d));
+            // Retrieve all categories
+            // TODO: hand over allCategories to display categories
+            self.libService.getAllCategories().subscribe(cats => {
+                self.allCategories = cats;
+            });
         });
     }
 
@@ -46,29 +56,36 @@ export class DocumentUpdateComponent implements OnInit {
 
     public update(): void {
         console.log("update!")
-        console.log("updated doc: " + JSON.stringify(this.xdoc));
+        console.log("doc to update: " + JSON.stringify(this.xdoc));
 
         let self = this;
+        this.xdoc.categories.forEach( d => self.newCategories.push(d));
+        this.xdoc.categories = [];
         this.libService.updateOrCreateDocument(self.xdoc).subscribe(doc => {
+            this.updateCategories(self);
             console.log("updated doc: " + JSON.stringify(doc));
         });
+        this.router.navigateByUrl('');
+    }
+
+    private updateCategories(self) {
         // Check for removed categories
-        this.oldCategories.forEach(oldCat => {
-                if (!(self.xdoc.categories.indexOf(oldCat) > -1)) {
+        self.oldCategories.forEach(oldCat => {
+                //console.log("Old cat: " + JSON.stringify(oldCat));
+                if (!(self.newCategories.indexOf(oldCat) > -1)) {
                     // delete
                     console.log("Delete cat: " + oldCat);
                 }
             }
         );
         // Check for new categories
-        this.xdoc.categories.forEach(newCat => {
+        self.newCategories.forEach(newCat => {
                 if (!(self.oldCategories.indexOf(newCat) > -1)) {
                     // add
                     console.log("Add cat: " + newCat);
+                    self.libService.addCategory(self.xdoc, newCat, self.allCategories);
                 }
             }
         );
-        this.router.navigateByUrl('');
     }
-
 }

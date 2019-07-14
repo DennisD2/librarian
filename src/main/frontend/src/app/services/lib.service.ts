@@ -72,6 +72,8 @@ export class LibService {
         let xdoc : XDocument = restData;
         if ("_embedded" in restData) {
             xdoc.categories = restData._embedded.categories.map(cat => cat.category);
+        } else {
+            xdoc.categories = [];
         }
         return xdoc;
     }
@@ -165,23 +167,27 @@ export class LibService {
             .pipe(catchError((e: any) => this.handleError(e)));
     }
 
-    public updateCategories( doc: XDocument) : Observable<XDocument> {
+    /*
+     * curl -i -X POST -H "Content-Type:text/uri-list"
+     *   -d "http://localhost:8080/categories/1"
+     *   http://localhost:8080/documents/4/categories
+     * RESULT is then: HTTP/1.1 204
+     * This works with curl, but does not with http.post(). Why?
+     */
+    addCategory(doc: XDocument, newCat: string, allCategories: XCategory[]) : any {
         const serviceUrl = doc._links['categories'].href;
-        console.log('UPDATE/CREATE cat service URL ' + serviceUrl);
-        const data1 = JSON.stringify(doc);
-        console.log('POST cat data: ' + data1);
-        const data = JSON.stringify(doc.categories);
-        console.log('POST cat data: ' + data);
+        console.log('Category relation service URL: ' + serviceUrl);
+        let index = allCategories.findIndex(cat => cat.category == newCat);
+        const relatedObject = allCategories[index]._links['self'].href;
+        console.log('POST relation URI: ' + relatedObject);
 
         let headers = new HttpHeaders();
-        headers.append('Content-Type', 'application/json');
-
-        return this.http.put<XCategory>(serviceUrl, doc, {headers: headers})
+        headers.append('Content-Type', 'text/uri-list');
+        return this.http.post(serviceUrl, relatedObject, {headers: headers})
             .pipe(map((data: any) => {
                 console.log('Update cat call result: ' + data);
                 return data;
             }))
             .pipe(catchError((e: any) => this.handleError(e)));
     }
-
 }
