@@ -11,7 +11,7 @@ import {XCategory} from "../model/XCategory";
     providedIn: 'root'
 })
 export class LibService {
-    private baseUrl: string = 'http://localhost:8080';
+    private baseUrl: string = ''; //http://localhost:8080';
     private documentUrl: string = this.baseUrl + '/documents';
     private categoryUrl: string = this.baseUrl + '/categories';
 
