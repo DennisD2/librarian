@@ -62,28 +62,30 @@ export class DocumentUpdateComponent implements OnInit {
         this.xdoc.categories.forEach( d => self.newCategories.push(d));
         this.xdoc.categories = [];
         this.libService.updateOrCreateDocument(self.xdoc).subscribe(doc => {
-            this.updateCategories(self);
+            self.updateCategories();
             console.log("updated doc: " + JSON.stringify(doc));
         });
         this.router.navigateByUrl('');
     }
 
-    private updateCategories(self) {
+    private updateCategories() {
         // Check for removed categories
-        self.oldCategories.forEach(oldCat => {
+        this.oldCategories.forEach(oldCat => {
                 //console.log("Old cat: " + JSON.stringify(oldCat));
-                if (!(self.newCategories.indexOf(oldCat) > -1)) {
+                if (!(this.newCategories.indexOf(oldCat) > -1)) {
                     // delete
                     console.log("Delete cat: " + oldCat);
                 }
             }
         );
         // Check for new categories
-        self.newCategories.forEach(newCat => {
-                if (!(self.oldCategories.indexOf(newCat) > -1)) {
+        this.newCategories.forEach(newCat => {
+                if (!(this.oldCategories.indexOf(newCat) > -1)) {
                     // add
                     console.log("Add cat: " + newCat);
-                    self.libService.addCategory(self.xdoc, newCat, self.allCategories);
+                    this.libService.addCategory(this.xdoc, newCat, this.allCategories).subscribe(data => {
+                        console.log("updateCategories returns: " + data);
+                    });
                 }
             }
         );

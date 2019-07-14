@@ -174,7 +174,7 @@ export class LibService {
      * RESULT is then: HTTP/1.1 204
      * This works with curl, but does not with http.post(). Why?
      */
-    addCategory(doc: XDocument, newCat: string, allCategories: XCategory[]) : any {
+    public addCategory(doc: XDocument, newCat: string, allCategories: XCategory[]) : Observable<any> {
         const serviceUrl = doc._links['categories'].href;
         console.log('Category relation service URL: ' + serviceUrl);
         let index = allCategories.findIndex(cat => cat.category == newCat);
