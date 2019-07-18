@@ -2,15 +2,15 @@ package de.spurtikus.mini.data.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
-
-import static javax.persistence.CascadeType.ALL;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Document implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="ID")
     private Long id;
 
     // Document title
@@ -26,8 +26,11 @@ public class Document implements Serializable {
     private String authors;
 
     // List of Categories
-    @OneToMany(cascade = ALL, orphanRemoval = true)
-    private Set<Category> categories;
+    @ManyToMany
+    @JoinTable(
+            joinColumns=@JoinColumn(name="DOCUMENT_ID", referencedColumnName="ID"),
+            inverseJoinColumns=@JoinColumn(name="CATEGORY_ID", referencedColumnName="ID"))
+    private List<Category> categories = new ArrayList<>();
 
     public Document() {
         super();
@@ -70,11 +73,11 @@ public class Document implements Serializable {
         this.authors = authors;
     }
 
-    public Set<Category> getCategories() {
+    public List<Category> getCategories() {
         return categories;
     }
 
-    public void setCategories(Set<Category> categories) {
+    public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
 
