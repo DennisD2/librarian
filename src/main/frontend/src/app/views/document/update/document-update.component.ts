@@ -20,9 +20,6 @@ export class DocumentUpdateComponent implements OnInit {
         categories: [];
         _links: null;
     };
-    oldCategories = [];
-    newCategories = [];
-
     allCategories: XCategory[] = null;
 
     constructor(protected route: ActivatedRoute,
@@ -38,9 +35,6 @@ export class DocumentUpdateComponent implements OnInit {
             self.xdoc = doc;
             console.log("doc: " + JSON.stringify(self.xdoc));
             self.xdoc.id = id;
-            // initialize array for later comparisation
-            self.oldCategories = [];
-            doc.categories.forEach( d => self.oldCategories.push(d));
             // Retrieve all categories
             // TODO: hand over allCategories to display categories
             self.libService.getAllCategories().subscribe(cats => {
@@ -59,35 +53,19 @@ export class DocumentUpdateComponent implements OnInit {
         console.log("doc to update: " + JSON.stringify(this.xdoc));
 
         let self = this;
-        this.xdoc.categories.forEach( d => self.newCategories.push(d));
-        this.xdoc.categories = [];
-        this.libService.updateOrCreateDocument(self.xdoc).subscribe(doc => {
-            self.updateCategories();
+        this.convertCategoriesToURIs();
+        this.libService.updateDocument(self.xdoc).subscribe(doc => {
             console.log("updated doc: " + JSON.stringify(doc));
         });
         this.router.navigateByUrl('');
     }
 
-    private updateCategories() {
-        // Check for removed categories
-        this.oldCategories.forEach(oldCat => {
-                //console.log("Old cat: " + JSON.stringify(oldCat));
-                if (!(this.newCategories.indexOf(oldCat) > -1)) {
-                    // delete
-                    console.log("Delete cat: " + oldCat);
-                }
-            }
-        );
-        // Check for new categories
-        this.newCategories.forEach(newCat => {
-                if (!(this.oldCategories.indexOf(newCat) > -1)) {
-                    // add
-                    console.log("Add cat: " + newCat);
-                    this.libService.addCategory(this.xdoc, newCat, this.allCategories).subscribe(data => {
-                        console.log("updateCategories returns: " + data);
-                    });
-                }
-            }
-        );
+    private convertCategoriesToURIs() {
+        let uris = [];
+        this.xdoc.categories.forEach( cat => {
+          let index = this.allCategories.map(c => c.category).indexOf(cat);
+          uris.push(this.allCategories[index]._links['self'].href);
+        })
+        this.xdoc.categories = uris;
     }
 }
