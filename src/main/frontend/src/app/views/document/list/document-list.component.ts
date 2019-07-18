@@ -15,9 +15,10 @@ export class DocumentListComponent implements OnInit {
 
     displayedColumns = ['title', 'authors', 'publishedYear', 'location', 'categories', 'actions'];
     xdocs: XDocument[] = [];
+
     dataSource = new MatTableDataSource(this.xdocs);
     @ViewChild(MatPaginator, null) paginator: MatPaginator;
-    //@ViewChild(MatSort, null) sort: MatSort;
+    @ViewChild(MatSort, {static: true}) sort: MatSort;
 
     constructor(protected libService: LibService,
                 protected router: Router) {
@@ -27,6 +28,7 @@ export class DocumentListComponent implements OnInit {
             //console.log(JSON.stringify(docs));
             self.xdocs = docs;
             self.dataSource.data = self.xdocs;
+            self.dataSource.sort = self.sort;
         });
     }
 
@@ -68,4 +70,5 @@ export class DocumentListComponent implements OnInit {
     }
 
 }
+
 

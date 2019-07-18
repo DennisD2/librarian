@@ -9,7 +9,8 @@
 
 <h2>{{title}}</h2>
 
-<mat-table [dataSource]="dataSource" >
+<mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+<mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="title">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
         <mat-cell *matCellDef="let row"> {{row.title}} </mat-cell>
@@ -51,46 +52,3 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns" (click)="rowClicked(row)"></mat-row>
 </mat-table>
-<mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
-
-<!-- <table class="xdocs" width="100%">
-    <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Year</th>
-        <th>Link</th>
-        <th>Selflink</th>
-        <th>Categories</th>
-        <th>Operations</th>
-    </tr>
-    <tr *ngFor="let xdoc of xdocs; let i = index">
-        <td>
-            <span class="xdoc">{{i}}</span>
-        </td>
-        <td>
-            <span class="xdoc">{{xdoc.title}}</span>
-        </td>
-        <td>
-            {{xdoc.publishedYear}}
-        </td>
-        <td>
-            <a href="{{xdoc.location}}">LINK</a>
-        </td>
-
-        <td>
-            <a href="{{xdoc._links.self.href}}">SELF</a>
-        </td>
-
-        <td>
-            <app-category-display [doc]="xdoc"></app-category-display>
-        </td>
-
-        <td>
-            <button (click)="delete(i)" class="btn btn-primary">
-                <span>Delete</span>
-            </button>
-            <button (click)="update(i)" class="btn btn-primary">
-                <span>Update</span>
-            </button>
-        </td>
-</table> -->
