@@ -11,6 +11,7 @@ import {XCategory} from "../../../model/XCategory";
 })
 export class DocumentUpdateComponent implements OnInit {
     title: string = 'Update Document';
+    urlPrefix: string = 'doc';
     xdoc: XDocument = new class implements XDocument {
         id: '';
         location: '';
@@ -60,6 +61,11 @@ export class DocumentUpdateComponent implements OnInit {
         this.router.navigateByUrl('');
     }
 
+    private delete(): void {
+        let remote_id = this.getRemoteId(this.xdoc._links['self'].href);
+        this.router.navigateByUrl(this.urlPrefix + '/delete/' + remote_id);
+    }
+
     private convertCategoriesToURIs() {
         let uris = [];
         this.xdoc.categories.forEach( cat => {
@@ -67,5 +73,13 @@ export class DocumentUpdateComponent implements OnInit {
           uris.push(this.allCategories[index]._links['self'].href);
         })
         this.xdoc.categories = uris;
+    }
+
+    // Calculate remote id from self URL string
+    protected getRemoteId(selfUrl: string): string {
+        let parts = selfUrl.split("/");
+        let id = parts[parts.length - 1];
+        console.log("remote id: " + id);
+        return id;
     }
 }

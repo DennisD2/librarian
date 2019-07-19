@@ -13,7 +13,7 @@ export class DocumentListComponent implements OnInit {
     title: string = 'List Documents';
     urlPrefix: string = 'doc';
 
-    displayedColumns = ['title', 'authors', 'publishedYear', 'location', 'categories', 'actions'];
+    displayedColumns = ['title', 'authors', 'publishedYear', 'location', 'categories'];
     xdocs: XDocument[] = [];
 
     dataSource = new MatTableDataSource(this.xdocs);
@@ -44,11 +44,6 @@ export class DocumentListComponent implements OnInit {
     public update(xdoc: XDocument): void {
         let remote_id = this.getRemoteId(xdoc._links['self'].href);
         this.router.navigateByUrl(this.urlPrefix + '/update/' + remote_id);
-    }
-
-    public delete(xdoc: XDocument): void {
-        let remote_id = this.getRemoteId(xdoc._links['self'].href);
-        this.router.navigateByUrl(this.urlPrefix + '/delete/' + remote_id);
     }
 
     public categories(): void {
