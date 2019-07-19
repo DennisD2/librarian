@@ -9,7 +9,7 @@
 
 <h2>{{title}}</h2>
 
-<mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+<mat-paginator [pageSizeOptions]="[200, 10, 25, 100]"></mat-paginator>
 <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="title">
         <mat-header-cell *matHeaderCellDef mat-sort-header> Title </mat-header-cell>
