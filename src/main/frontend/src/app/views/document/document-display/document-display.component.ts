@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {PDFDocumentProxy} from "pdfjs-dist";
 
 @Component({
   selector: 'app-document-display',
@@ -10,6 +11,9 @@ export class DocumentDisplayComponent implements OnInit {
   @Input() zoom: number;
   @Input() rotation: number;
   @Input() page: number;
+
+  totalPages: number;
+  private isLoaded: boolean;
 
   constructor() {
   }
@@ -44,5 +48,10 @@ export class DocumentDisplayComponent implements OnInit {
       this.zoom -= 0.1;
     }
     console.log("zoom out to " + this.zoom);
+  }
+
+  public afterLoadComplete(pdf: PDFDocumentProxy) {
+    this.totalPages = pdf.numPages;
+    this.isLoaded = true;
   }
 }
