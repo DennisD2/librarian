@@ -38,7 +38,7 @@ export class DocumentCreateComponent implements OnInit {
     public create(): void {
         console.log("create: " + JSON.stringify(this.xdoc));
         let self = this;
-        // create is 'id==0'
+        // on creation, doc has 'id==0'
         self.xdoc.id = '0';
         this.libService.createDocument(self.xdoc).subscribe(doc => {
             self.xdoc = doc;

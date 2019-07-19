@@ -3,6 +3,7 @@ import {Router, ActivatedRoute} from "@angular/router";
 import {LibService} from "../../../services/lib.service";
 import {XDocument} from "../../../model/XDocument";
 import {XCategory} from "../../../model/XCategory";
+import {getRemoteId} from "../../../util/helper";
 
 @Component({
     selector: 'app-update',
@@ -62,7 +63,7 @@ export class DocumentUpdateComponent implements OnInit {
     }
 
     private delete(): void {
-        let remote_id = this.getRemoteId(this.xdoc._links['self'].href);
+        let remote_id = getRemoteId(this.xdoc._links['self'].href);
         this.router.navigateByUrl(this.urlPrefix + '/delete/' + remote_id);
     }
 
@@ -71,15 +72,8 @@ export class DocumentUpdateComponent implements OnInit {
         this.xdoc.categories.forEach( cat => {
           let index = this.allCategories.map(c => c.category).indexOf(cat);
           uris.push(this.allCategories[index]._links['self'].href);
-        })
+        });
         this.xdoc.categories = uris;
     }
 
-    // Calculate remote id from self URL string
-    protected getRemoteId(selfUrl: string): string {
-        let parts = selfUrl.split("/");
-        let id = parts[parts.length - 1];
-        console.log("remote id: " + id);
-        return id;
-    }
 }

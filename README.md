@@ -52,6 +52,5 @@ java -jar target/librarian-1.0.0-SNAPSHOT.jar
 * fix delete category
 * Remove host etc. part from locations
 * Create document : add category handling
-* Sort by category
+* Better Sort by category
 * ad id column to list documents or timestamp 
-* move update/delete buttons to update page; remove update button
