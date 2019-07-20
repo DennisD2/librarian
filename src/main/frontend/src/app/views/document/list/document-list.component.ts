@@ -2,7 +2,8 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {XDocument} from "../../../model/XDocument";
 import {LibService} from "../../../services/lib.service";
-import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material";
+import {MatPaginator, MatSort, MatTableDataSource} from "@angular/material"
+import {getRemoteId} from "../../../util/helper";
 
 @Component({
     selector: 'app-list',
@@ -13,11 +14,12 @@ export class DocumentListComponent implements OnInit {
     title: string = 'List Documents';
     urlPrefix: string = 'doc';
 
-    displayedColumns = ['title', 'authors', 'publishedYear', 'location', 'categories', 'actions'];
+    displayedColumns = ['title', 'authors', 'publishedYear', 'location', 'categories'];
     xdocs: XDocument[] = [];
+
     dataSource = new MatTableDataSource(this.xdocs);
-    @ViewChild(MatPaginator, null) paginator: MatPaginator;
-    //@ViewChild(MatSort, null) sort: MatSort;
+    @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+    @ViewChild(MatSort, {static: true}) sort: MatSort;
 
     constructor(protected libService: LibService,
                 protected router: Router) {
@@ -27,11 +29,11 @@ export class DocumentListComponent implements OnInit {
             //console.log(JSON.stringify(docs));
             self.xdocs = docs;
             self.dataSource.data = self.xdocs;
+            self.dataSource.sort = self.sort;
         });
     }
 
     ngOnInit() {
-
         this.dataSource.paginator = this.paginator;
     }
 
@@ -40,32 +42,14 @@ export class DocumentListComponent implements OnInit {
     }
 
     public update(xdoc: XDocument): void {
-        let remote_id = this.getRemoteId(xdoc._links['self'].href);
+        let remote_id = getRemoteId(xdoc._links['self'].href);
         this.router.navigateByUrl(this.urlPrefix + '/update/' + remote_id);
-    }
-
-    public delete(xdoc: XDocument): void {
-        let remote_id = this.getRemoteId(xdoc._links['self'].href);
-        this.router.navigateByUrl(this.urlPrefix + '/delete/' + remote_id);
     }
 
     public categories(): void {
         // Category handling
         this.router.navigateByUrl('cat/list');
     }
-
-    public rowClicked(xdoc: XDocument): void {
-        let remote_id = this.getRemoteId(xdoc._links['self'].href);
-        this.router.navigateByUrl(this.urlPrefix + '/update/' + remote_id);
-    }
-
-    // Calculate remote id from self URL string
-    protected getRemoteId(selfUrl: string): string {
-        let parts = selfUrl.split("/");
-        let id = parts[parts.length - 1];
-        console.log("remote id: " + id);
-        return id;
-    }
-
 }
+
 

@@ -1,4 +1,7 @@
-<div>
+<div *ngIf="isLoaded">
+    <br>
+    Total pages: <span>{{totalPages}} </span>
+    <br>
     <button (click)="previousPage()" class="btn btn-primary">
         <i class="material-icons">arrow_back_ios</i>
         <span>Previous</span>
@@ -24,8 +27,8 @@
         <span>Zoom out</span>
     </button>
 
-    <pdf-viewer [src]="docUrl" [original-size]="false" [show-all]="false" [(page)]="page" [rotation]="rotation"
-                [zoom]="zoom">
-    </pdf-viewer>
-
 </div>
+<pdf-viewer [src]="docUrl" [original-size]="false" [show-all]="false" [(page)]="page" [rotation]="rotation"
+            [zoom]="zoom"  (after-load-complete)="afterLoadComplete($event)">
+</pdf-viewer>
+

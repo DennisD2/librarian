@@ -15,17 +15,42 @@ Tested with JDK 1.8.
 ## REST service call
 
 ### Documents
+```
 http://localhost:8080/documents
 http://localhost:8080/documents/1
+```
+
+### Categories
+```
+http://localhost:8080/categories
+http://localhost:8080/categories/1
+```
+
 
 ### Web index page
-http://localhost:8080/index.html or just http://localhost:8080/ .
+```
+http://localhost:8080/index.html or just http://localhost:8080/ 
+```
 
 This requires a Maven run to make sure that the frontend is build and copied
 from ```frontend/dist/frontend``` to ```target/classes/resources```.
 
 # How to compile and package
+```
 mvn clean install -DskipTests
+```
 
 # How to run
-java -jar target/springdata-ng-1.0.0-SNAPSHOT.jar
+```
+java -jar target/librarian-1.0.0-SNAPSHOT.jar
+```
+
+# Open issues
+
+* Add script to backup DB 
+* Add page to show new files
+* fix delete category
+* Remove host etc. part from locations
+* Create document : add category handling
+* Better Sort by category
+* ad id column to list documents or timestamp 

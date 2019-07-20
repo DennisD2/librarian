@@ -25,5 +25,9 @@ Categories:
     <i class="material-icons">cancel</i>
     <span>Cancel</span>
 </button>
+<button mat-button (click)="delete()">
+    <i class="material-icons">delete_forever</i>
+    Delete
+</button>
 
 <app-document-display [docUrl]="xdoc.location" [page]="1" [rotation]="0" [zoom]="0.5"></app-document-display>

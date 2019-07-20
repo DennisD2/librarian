@@ -11,7 +11,7 @@ import {XCategory} from "../model/XCategory";
     providedIn: 'root'
 })
 export class LibService {
-    private baseUrl: string = 'http://localhost:8080';
+    private baseUrl: string = ''; //http://localhost:8080';
     private documentUrl: string = this.baseUrl + '/documents';
     private categoryUrl: string = this.baseUrl + '/categories';
 
@@ -79,12 +79,12 @@ export class LibService {
     }
 
     /**
-     * Create or update a document (PUT).
+     * Create a new document (PUT).
      * @param doc Document to create or update.
      */
-    public updateOrCreateDocument(doc: XDocument): Observable<XDocument> {
+    public createDocument(doc: XDocument): Observable<XDocument> {
         const serviceUrl = this.documentUrl + '/' + doc.id;
-        console.log('UPDATE/CREATE service URL ' + serviceUrl);
+        console.log('CREATE service URL ' + serviceUrl);
         const data = JSON.stringify(doc);
         console.log('POST data: ' + data);
 
@@ -92,6 +92,27 @@ export class LibService {
         headers.append('Content-Type', 'application/json');
 
         return this.http.put<XDocument>(serviceUrl, doc, {headers: headers})
+            .pipe(map((data: any) => {
+                console.log('Update call result: ' + data);
+                return data;
+            }))
+            .pipe(catchError((e: any) => this.handleError(e)));
+    }
+
+    /**
+     * Update an existing document (PATCH).
+     * @param doc Document to create or update.
+     */
+    public updateDocument(doc: XDocument): Observable<XDocument> {
+        const serviceUrl = this.documentUrl + '/' + doc.id;
+        console.log('UPDATE service URL ' + serviceUrl);
+        const data = JSON.stringify(doc);
+        console.log('POST data: ' + data);
+
+        let headers = new HttpHeaders();
+        headers.append('Content-Type', 'application/json');
+
+        return this.http.patch<XDocument>(serviceUrl, doc, {headers: headers})
             .pipe(map((data: any) => {
                 console.log('Update call result: ' + data);
                 return data;
@@ -174,12 +195,12 @@ export class LibService {
      * RESULT is then: HTTP/1.1 204
      * This works with curl, but does not with http.post(). Why?
      */
-    public addCategory(doc: XDocument, newCat: string, allCategories: XCategory[]) : Observable<any> {
+    /*public addCategory(doc: XDocument, newCat: string, allCategories: XCategory[]) : Observable<any> {
         const serviceUrl = doc._links['categories'].href;
-        console.log('Category relation service URL: ' + serviceUrl);
+        console.log('Relation service URL: ' + serviceUrl);
         let index = allCategories.findIndex(cat => cat.category == newCat);
         const relatedObject = allCategories[index]._links['self'].href;
-        console.log('POST relation URI: ' + relatedObject);
+        console.log('Relation Post data (a URI): ' + relatedObject);
 
         let headers = new HttpHeaders();
         headers.append('Content-Type', 'text/uri-list');
@@ -189,5 +210,5 @@ export class LibService {
                 return data;
             }))
             .pipe(catchError((e: any) => this.handleError(e)));
-    }
+    }*/
 }

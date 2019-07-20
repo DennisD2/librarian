@@ -11,6 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -45,7 +46,7 @@ public class Application {
 
             // save a couple of Documents
             Document doc = new Document("HP-75C FORTH", 1983, "file:///home/dennis/doclib/software/75Forth.pdf");
-            Set<Category> cat = new HashSet<>();
+            List<Category> cat = new ArrayList<>();
             cat.add(cat_sw);
             cat.add(cat_hist);
             doc.setCategories(cat);
