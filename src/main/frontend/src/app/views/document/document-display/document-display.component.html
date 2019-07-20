@@ -1,6 +1,13 @@
+<div *ngIf="!isLoaded">
+    <br>
+    Loading document...
+    <br>
+</div>
+
 <div *ngIf="isLoaded">
     <br>
-    Total pages: <span>{{totalPages}} </span>
+    <span><input type="text" id="pageInput" size="5" [(ngModel)]="pageInput" (change)="newPageValue()"> / {{totalPages}} pages</span>
+
     <br>
     <button (click)="previousPage()" class="btn btn-primary">
         <i class="material-icons">arrow_back_ios</i>
@@ -26,8 +33,8 @@
         <i class="material-icons">zoom_out</i>
         <span>Zoom out</span>
     </button>
-
 </div>
+
 <pdf-viewer [src]="docUrl" [original-size]="false" [show-all]="false" [(page)]="page" [rotation]="rotation"
             [zoom]="zoom"  (after-load-complete)="afterLoadComplete($event)">
 </pdf-viewer>
