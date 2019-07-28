@@ -1,9 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 
-import {XDocument} from "../../../model/XDocument";
+import {newXDocument, XDocument} from "../../../model/XDocument";
 
 import {LibService} from "../../../services/lib.service";
+
+import * as moment from 'moment';
 
 @Component({
     selector: 'app-create',
@@ -12,19 +14,13 @@ import {LibService} from "../../../services/lib.service";
 })
 export class DocumentCreateComponent implements OnInit {
     title: string = 'Create Document';
-    xdoc: XDocument = new class implements XDocument {
-        id: '';
-        location: '';
-        publishedYear: 0;
-        title: '';
-        authors: '';
-        categories: [];
-        _links: null;
-    };
+    xdoc: XDocument = newXDocument();
 
     constructor(protected route: ActivatedRoute,
                 protected router: Router,
                 protected libService: LibService) {
+        let now =  moment(Date.now()).format('YYYY-MM-DD H:m:s');
+        this.xdoc.timestamp = now;
     }
 
     ngOnInit() {

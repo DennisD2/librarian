@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router, ActivatedRoute} from "@angular/router";
 import {LibService} from "../../../services/lib.service";
-import {XDocument} from "../../../model/XDocument";
+import {newXDocument, XDocument} from "../../../model/XDocument";
 import {XCategory} from "../../../model/XCategory";
 import {getRemoteId} from "../../../util/helper";
 
@@ -13,15 +13,7 @@ import {getRemoteId} from "../../../util/helper";
 export class DocumentUpdateComponent implements OnInit {
     title: string = 'Update Document';
     urlPrefix: string = 'doc';
-    xdoc: XDocument = new class implements XDocument {
-        id: '';
-        location: '';
-        publishedYear: 0;
-        title: '';
-        authors: '';
-        categories: [];
-        _links: null;
-    };
+    xdoc: XDocument = newXDocument();
     allCategories: XCategory[] = null;
 
     constructor(protected route: ActivatedRoute,

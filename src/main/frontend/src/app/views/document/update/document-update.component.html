@@ -12,6 +12,10 @@ Authors: <input type="text" name="authors" [(ngModel)]="xdoc.authors"/>
 Location: <input type="text" id="location" size="80" [(ngModel)]="xdoc.location"/>
 <p></p>
 
+Date added: <input type="text" id="timestamp" size="20" [(ngModel)]="xdoc.timestamp"/>
+<p></p>
+
+
 Categories:
 <app-category-display [doc]="xdoc" [editMode]="true"></app-category-display>
 <p></p>

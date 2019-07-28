@@ -44,13 +44,3 @@ mvn clean install -DskipTests
 ```
 java -jar target/librarian-1.0.0-SNAPSHOT.jar
 ```
-
-# Open issues
-
-* Add script to backup DB 
-* Add page to show new files
-* fix delete category
-* Remove host etc. part from locations
-* Create document : add category handling
-* Better Sort by category
-* ad id column to list documents or timestamp 

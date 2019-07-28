@@ -7,7 +7,22 @@ export interface XDocument {
     publishedYear: number;
     location: string;
     categories: string[];
+    timestamp: string;
     _links: XLink[];
+}
+
+export function newXDocument() : XDocument {
+    let doc : XDocument = new class implements XDocument {
+        id: '';
+        location: '';
+        publishedYear: 0;
+        title: '';
+        authors: '';
+        timestamp: '';
+        categories: [];
+        _links: null;
+    };
+    return doc;
 }
 
 /*

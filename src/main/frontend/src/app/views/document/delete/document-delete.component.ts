@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {XDocument} from "../../../model/XDocument";
+import {newXDocument, XDocument} from "../../../model/XDocument";
 import {LibService} from "../../../services/lib.service";
 
 @Component({
@@ -10,15 +10,7 @@ import {LibService} from "../../../services/lib.service";
 })
 export class DocumentDeleteComponent implements OnInit {
     title: string = 'Delete Document';
-    xdoc: XDocument = new class implements XDocument {
-        id: '';
-        location: '';
-        publishedYear: 0;
-        title: '';
-        authors: '';
-        categories: [];
-        _links: null;
-    };
+    xdoc: XDocument = newXDocument();
 
     constructor(protected route: ActivatedRoute,
                 protected router: Router,

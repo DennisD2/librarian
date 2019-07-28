@@ -14,7 +14,7 @@ export class DocumentListComponent implements OnInit {
     title: string = 'List Documents';
     urlPrefix: string = 'doc';
 
-    displayedColumns = ['title', 'authors', 'publishedYear', 'location', 'categories'];
+    displayedColumns = ['title', 'authors', 'publishedYear', 'location', 'timestamp', 'categories'];
     xdocs: XDocument[] = [];
 
     dataSource = new MatTableDataSource(this.xdocs);

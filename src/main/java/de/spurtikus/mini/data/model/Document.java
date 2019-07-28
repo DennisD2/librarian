@@ -40,6 +40,11 @@ public class Document implements Serializable {
     @Setter
     private String authors;
 
+    // Timestamp
+    @Getter
+    @Setter
+    private String timestamp;
+
     // List of Categories
     @Getter
     @Setter
