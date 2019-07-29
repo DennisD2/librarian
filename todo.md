@@ -1,7 +1,7 @@
 # TODOs
 
 ## Open issues
-* Category column horizontal aligment
+* Category column horizontal alignment
 * Add page to show new files
 * fix delete category
 * Remove host etc. part from locations
