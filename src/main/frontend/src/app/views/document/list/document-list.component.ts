@@ -13,6 +13,7 @@ import {getRemoteId} from "../../../util/helper";
 export class DocumentListComponent implements OnInit {
     title: string = 'List Documents';
     urlPrefix: string = 'doc';
+    docRepoBaseUri: string = '/doclib/'
 
     displayedColumns = ['title', 'authors', 'publishedYear', 'location', 'timestamp', 'categories'];
     xdocs: XDocument[] = [];

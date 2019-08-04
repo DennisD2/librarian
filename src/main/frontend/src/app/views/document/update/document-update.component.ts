@@ -16,6 +16,8 @@ export class DocumentUpdateComponent implements OnInit {
     xdoc: XDocument = newXDocument();
     allCategories: XCategory[] = null;
 
+    docRepoBaseUri: string = 'http://raspberrypi/doclib/';
+
     constructor(protected route: ActivatedRoute,
                 protected router: Router,
                 protected libService: LibService) {
@@ -66,6 +68,10 @@ export class DocumentUpdateComponent implements OnInit {
           uris.push(this.allCategories[index]._links['self'].href);
         });
         this.xdoc.categories = uris;
+    }
+
+    public getContentURI(xdoc: XDocument) : string {
+        return this.docRepoBaseUri + xdoc.location;
     }
 
 }
