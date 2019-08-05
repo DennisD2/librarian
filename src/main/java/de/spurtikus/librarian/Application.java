@@ -1,9 +1,9 @@
-package de.spurtikus.mini;
+package de.spurtikus.librarian;
 
-import de.spurtikus.mini.data.CategoryRepository;
-import de.spurtikus.mini.data.DocumentRepository;
-import de.spurtikus.mini.data.model.Category;
-import de.spurtikus.mini.data.model.Document;
+import de.spurtikus.librarian.data.CategoryRepository;
+import de.spurtikus.librarian.data.DocumentRepository;
+import de.spurtikus.librarian.data.model.Category;
+import de.spurtikus.librarian.data.model.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -12,9 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @SpringBootApplication
 public class Application {

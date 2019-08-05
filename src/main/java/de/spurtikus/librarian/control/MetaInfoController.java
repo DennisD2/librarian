@@ -1,4 +1,4 @@
-package de.spurtikus.mini.control;
+package de.spurtikus.librarian.control;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

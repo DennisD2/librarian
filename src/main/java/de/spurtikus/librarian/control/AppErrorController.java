@@ -1,4 +1,4 @@
-package de.spurtikus.mini.control;
+package de.spurtikus.librarian.control;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;

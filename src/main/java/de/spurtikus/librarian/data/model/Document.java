@@ -1,4 +1,4 @@
-package de.spurtikus.mini.data.model;
+package de.spurtikus.librarian.data.model;
 
 import lombok.*;
 

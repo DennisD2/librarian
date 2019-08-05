@@ -1,6 +1,6 @@
-package de.spurtikus.mini;
+package de.spurtikus.librarian;
 
-import de.spurtikus.mini.data.model.Document;
+import de.spurtikus.librarian.data.model.Document;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

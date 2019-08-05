@@ -1,9 +1,7 @@
-package de.spurtikus.mini;
+package de.spurtikus.librarian;
 
-import de.spurtikus.mini.data.model.Category;
+import de.spurtikus.librarian.data.model.Category;
 import org.springframework.data.repository.PagingAndSortingRepository;
-import org.springframework.data.rest.core.annotation.RepositoryRestResource;
-import org.springframework.web.bind.annotation.CrossOrigin;
 
 //@RepositoryRestResource(exported = false)
 //@CrossOrigin
