@@ -16,7 +16,7 @@ export class DocumentUpdateComponent implements OnInit {
     xdoc: XDocument = newXDocument();
     allCategories: XCategory[] = null;
 
-    docRepoBaseUri: string = 'http://raspberrypi/doclib/';
+    docRepoBaseUri: string = 'undefined';
 
     constructor(protected route: ActivatedRoute,
                 protected router: Router,
@@ -35,6 +35,10 @@ export class DocumentUpdateComponent implements OnInit {
             // TODO: hand over allCategories to display categories
             self.libService.getAllCategories().subscribe(cats => {
                 self.allCategories = cats;
+                // Get BaseURI
+                self.libService.getBaseURI().subscribe(baseURI => {
+                    self.docRepoBaseUri = baseURI;
+                });
             });
         });
     }

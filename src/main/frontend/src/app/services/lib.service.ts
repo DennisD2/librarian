@@ -11,7 +11,8 @@ import {XCategory} from "../model/XCategory";
     providedIn: 'root'
 })
 export class LibService {
-    private baseUrl: string = ''; //http://localhost:8080';
+    private baseUrl: string = '';
+    private metadataUrl: string = this.baseUrl + '/baseURI';
     private documentUrl: string = this.baseUrl + '/documents';
     private categoryUrl: string = this.baseUrl + '/categories';
 
@@ -22,6 +23,20 @@ export class LibService {
         console.error('An error occurred', error);
         // return Promise.reject(error.message || error);
         return Promise.resolve('call failed (status=' + error.status + ', message=' + error.message + ')');
+    }
+
+    /**
+     * READ Base URI for document repository.
+     */
+    public getBaseURI(): Observable<string> {
+        const serviceUrl = this.metadataUrl;
+        console.log('READ metadata service URL ' + serviceUrl);
+        return this.http.get<string>(serviceUrl, {responseType: 'text' as 'json'})
+            .pipe(map((data: string) => {
+                console.log('Metadata baseURI call result: ' + data);
+                return data;
+            }))
+            .pipe(catchError((e: any) => this.handleError(e)));
     }
 
     /**

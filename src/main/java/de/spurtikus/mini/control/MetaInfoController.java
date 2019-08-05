@@ -9,7 +9,7 @@ public class MetaInfoController {
     // TODO: read value from application.properties
     String documentBaseURI = "http://raspberrypi/doclib/";
 
-    @RequestMapping(value="/baseURI", produces={"text/html"})
+    @RequestMapping(value="/baseURI")
     @ResponseBody
     public String getBaseURI() {
         return documentBaseURI;
