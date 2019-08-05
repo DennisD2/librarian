@@ -2,7 +2,7 @@
 
 ## Open issues
 * Category column horizontal alignment
-* Add page to create "diff" bertween DB and file system. Show new files, orphans, doublettes.
+* Add page to create "diff" between DB and file system. Show new files, orphans, doublettes.
 * Remove host etc. part from locations
 * Create document page: add category handling
 * Improve Sort by category
