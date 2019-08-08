@@ -20,7 +20,6 @@ import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-
 public class LibrarianTest {
 
 	String baseDirectory = "/home/dennis/doclib/";
