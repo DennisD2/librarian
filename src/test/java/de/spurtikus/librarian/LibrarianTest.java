@@ -1,8 +1,11 @@
 package de.spurtikus.librarian;
 
+import de.spurtikus.librarian.analyzer.FileCollector;
+import de.spurtikus.librarian.analyzer.StoreAnalyzer;
 import de.spurtikus.librarian.data.DocumentRepository;
 import de.spurtikus.librarian.data.model.Document;
 import org.junit.Test;
+import org.junit.jupiter.api.Assertions;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -14,7 +17,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -40,7 +42,7 @@ public class LibrarianTest {
 	@Test
 	public void testDBRead() throws IOException {
 		Iterable<Document> docs = documentRepository.findAll();
-		assertNotNull(docs);
+		Assertions.assertNotNull(docs);
 		for (Document doc : docs) {
 			System.out.println("DB: " + doc.getLocation());
 		}

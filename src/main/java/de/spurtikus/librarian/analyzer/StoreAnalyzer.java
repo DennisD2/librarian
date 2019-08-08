@@ -1,4 +1,4 @@
-package de.spurtikus.librarian;
+package de.spurtikus.librarian.analyzer;
 
 import de.spurtikus.librarian.data.model.Document;
 

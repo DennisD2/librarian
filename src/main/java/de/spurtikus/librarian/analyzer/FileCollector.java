@@ -1,4 +1,4 @@
-package de.spurtikus.librarian;
+package de.spurtikus.librarian.analyzer;
 
 import lombok.Getter;
 
@@ -9,7 +9,7 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.List;
 
-class FileCollector extends SimpleFileVisitor<Path> {
+public class FileCollector extends SimpleFileVisitor<Path> {
     String baseDirectory = "/home/dennis/Downloads/";
 
     @Getter
