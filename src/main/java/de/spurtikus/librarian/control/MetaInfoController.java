@@ -31,13 +31,13 @@ public class MetaInfoController {
 
     StoreAnalyzer storeAnalyzer = new StoreAnalyzer();
 
-    @RequestMapping(value="/baseURI")
+    @RequestMapping(value="/meta/baseURI")
     @ResponseBody
     public String getBaseURI() {
         return documentBaseURI;
     }
 
-    @RequestMapping(value="/doublettes")
+    @RequestMapping(value="/meta/doublettes", produces={"application/json"})
     @ResponseBody
     public String getDoublettes() throws IOException {
         Map<String, String> doublettes = storeAnalyzer.getDoublettes(baseDirectory);
@@ -48,7 +48,7 @@ public class MetaInfoController {
         return new JSONObject(doublettes).toJSONString();
     }
 
-    @RequestMapping(value="/fsorphans")
+    @RequestMapping(value="/meta/fsorphans", produces={"application/json"})
     @ResponseBody
     public String getFSOrphans() throws IOException {
         // get all files in DB
@@ -66,7 +66,7 @@ public class MetaInfoController {
         return JSONArray.toJSONString(fsOrphans, JSONStyle.NO_COMPRESS);
     }
 
-    @RequestMapping(value="/dborphans")
+    @RequestMapping(value="/meta/dborphans", produces={"application/json"})
     @ResponseBody
     public String getDBOrphans() throws IOException {
         // get all files in DB
