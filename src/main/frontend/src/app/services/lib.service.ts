@@ -12,9 +12,13 @@ import {XCategory} from "../model/XCategory";
 })
 export class LibService {
     private baseUrl: string = '';
-    private metadataUrl: string = this.baseUrl + '/baseURI';
     private documentUrl: string = this.baseUrl + '/documents';
     private categoryUrl: string = this.baseUrl + '/categories';
+    private metaUrl: string = this.baseUrl + '/meta';
+    private baseURIUrl: string = this.metaUrl + '/baseURI';
+    private doublettesURIUrl: string = this.metaUrl + '/baseURI';
+    private fsorphansURIUrl: string = this.metaUrl + '/fsorphans';
+    private dborphansURIUrl: string = this.metaUrl + '/dborphans';
 
     constructor(protected http: HttpClient) {
     }
@@ -29,7 +33,7 @@ export class LibService {
      * READ Base URI for document repository.
      */
     public getBaseURI(): Observable<string> {
-        const serviceUrl = this.metadataUrl;
+        const serviceUrl = this.baseURIUrl;
         console.log('READ metadata service URL ' + serviceUrl);
         return this.http.get<string>(serviceUrl, {responseType: 'text' as 'json'})
             .pipe(map((data: string) => {
@@ -226,4 +230,49 @@ export class LibService {
             }))
             .pipe(catchError((e: any) => this.handleError(e)));
     }*/
+
+    /**
+     * Get Orphans in file system (GET).
+     */
+    public getFSOrphans(): Observable<string[]> {
+        const serviceUrl = this.fsorphansURIUrl;
+        console.log('READ FS Orphans service URL ' + serviceUrl);
+
+        return this.http.get<string[]>(serviceUrl)
+            .pipe(map((data: any) => {
+                console.log('GET FS Orphans  Service call result: ' +  JSON.stringify(data));
+                return data;
+            }))
+            .pipe(catchError((e: any) => this.handleError(e)));
+    }
+
+    /**
+     * Get Orphans in DB (GET).
+     */
+    public getDBOrphans(): Observable<string[]> {
+        const serviceUrl = this.dborphansURIUrl;
+        console.log('READ DB Orphans service URL ' + serviceUrl);
+
+        return this.http.get<string[]>(serviceUrl)
+            .pipe(map((data: any) => {
+                console.log('GET DB Orphans  Service call result: ' + JSON.stringify(data));
+                return data;
+            }))
+            .pipe(catchError((e: any) => this.handleError(e)));
+    }
+
+    /**
+     * Get Orphans in DB (GET).
+     */
+    public getDoublettes(): Observable<string[]> {
+        const serviceUrl = this.dborphansURIUrl;
+        console.log('READ Doublettes service URL ' + serviceUrl);
+
+        return this.http.get<string[]>(serviceUrl)
+            .pipe(map((data: any) => {
+                console.log('GET Doublettes Service call result: ' +  JSON.stringify(data));
+                return data;
+            }))
+            .pipe(catchError((e: any) => this.handleError(e)));
+    }
 }

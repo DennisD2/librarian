@@ -1,3 +1,49 @@
-<p>
-  fs-orphans works!
-</p>
+<h2>{{title}}</h2>
+
+<h3>File system Orphans</h3>
+<table class="xorphans">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+  </tr>
+  <tr *ngFor="let orphan of fsOrphans; let i = index">
+    <td>
+      <span class="xorphans">{{i}}</span>
+    </td>
+    <td>
+      <span class="xorphans">{{orphan}}</span>
+    </td>
+  </tr>
+</table>
+
+<h3>DB Orphans</h3>
+<table class="xorphans">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+  </tr>
+  <tr *ngFor="let orphan of dbOrphans; let i = index">
+    <td>
+      <span class="xorphans">{{i}}</span>
+    </td>
+    <td>
+      <span class="xorphans">{{orphan}}</span>
+    </td>
+  </tr>
+</table>
+
+<h3>Doublette candidates</h3>
+<table class="xorphans">
+  <tr>
+    <th>Id</th>
+    <th>Name</th>
+  </tr>
+  <tr *ngFor="let doublette of doublettes; let i = index">
+    <td>
+      <span class="xorphans">{{i}}</span>
+    </td>
+    <td>
+      <span class="xorphans">{{doublette}}</span>
+    </td>
+  </tr>
+</table>

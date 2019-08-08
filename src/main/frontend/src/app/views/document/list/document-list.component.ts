@@ -50,6 +50,11 @@ export class DocumentListComponent implements OnInit {
         // Category handling
         this.router.navigateByUrl('cat/list');
     }
+
+    public meta_fsorphans(): void {
+        this.router.navigateByUrl('/metainfo/fsorphans');
+    }
+
 }
 
 

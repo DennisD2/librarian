@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LibService} from "../../../services/lib.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-fs-orphans',
@@ -6,10 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fs-orphans.component.css']
 })
 export class FsOrphansComponent implements OnInit {
+  title: string = 'List of Orphans';
 
-  constructor() { }
+  fsOrphans: string[] = [];
+  dbOrphans: string[] = [];
+  doublettes: string[] = [];
+
+  constructor(protected libService: LibService,
+              protected router: Router) { }
 
   ngOnInit() {
+    const self = this;
+    this.libService.getFSOrphans().subscribe(response => {
+      self.fsOrphans = response;
+      this.libService.getDBOrphans().subscribe(response => {
+        self.dbOrphans = response;
+        /*this.libService.getDoublettes().subscribe(response => {
+          self.doublettes = response;
+        });*/
+      });
+    });
   }
-
 }

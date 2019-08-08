@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LibService} from "../../../services/lib.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-doublettes',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./doublettes.component.css']
 })
 export class DoublettesComponent implements OnInit {
+  title: string = 'List of doublette candidates';
 
-  constructor() { }
+
+
+  constructor(protected libService: LibService,
+              protected router: Router) { }
 
   ngOnInit() {
+
   }
 
 }

@@ -41,11 +41,11 @@ public class MetaInfoController {
     @ResponseBody
     public String getDoublettes() throws IOException {
         Map<String, String> doublettes = storeAnalyzer.getDoublettes(baseDirectory);
-        doublettes.forEach((doc1,doc2) -> {
+ /*       doublettes.forEach((doc1,doc2) -> {
             System.out.println("Doublette candidate: " + doc1.replace(baseDirectory,"")
                     + "(compared with: " + doc2.replace(baseDirectory,"") + ")");
         });
-        return new JSONObject(doublettes).toJSONString();
+*/        return new JSONObject(doublettes).toJSONString();
     }
 
     @RequestMapping(value="/meta/fsorphans", produces={"application/json"})
