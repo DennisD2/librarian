@@ -9,7 +9,7 @@ import {Doublette} from "../../../model/Doublette";
   styleUrls: ['./fs-orphans.component.css']
 })
 export class FsOrphansComponent implements OnInit {
-  title: string = 'List of Orphans';
+  title: string = 'Librarian Analysis Result';
 
   fsOrphans: string[] = [];
   dbOrphans: string[] = [];
