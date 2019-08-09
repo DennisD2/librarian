@@ -76,7 +76,7 @@ public class LibrarianTest {
 	public void testDoublettes() throws IOException, NoSuchAlgorithmException {
 		Map<String, String> doublettes = storeAnalyzer.getDoublettes(baseDirectory);
 		doublettes.forEach((doc1,doc2) -> {
-			System.out.println("Doublette candidate: " + doc1.replace(baseDirectory,"")
+			System.out.println("Doublette.ts candidate: " + doc1.replace(baseDirectory,"")
 				+ "(compared with: " + doc2.replace(baseDirectory,"") + ")");
 		});
 	}

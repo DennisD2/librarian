@@ -36,14 +36,18 @@
 <table class="xorphans">
   <tr>
     <th>Id</th>
-    <th>Name</th>
+    <th>Object 1</th>
+    <th>Object 2</th>
   </tr>
   <tr *ngFor="let doublette of doublettes; let i = index">
     <td>
       <span class="xorphans">{{i}}</span>
     </td>
     <td>
-      <span class="xorphans">{{doublette}}</span>
+      <span class="xorphans">{{doublette.path1}}</span>
+    </td>
+    <td>
+      <span class="xorphans">{{doublette.path2}}</span>
     </td>
   </tr>
 </table>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {LibService} from "../../../services/lib.service";
 import {Router} from "@angular/router";
+import {Doublette} from "../../../model/Doublette";
 
 @Component({
   selector: 'app-fs-orphans',
@@ -12,7 +13,7 @@ export class FsOrphansComponent implements OnInit {
 
   fsOrphans: string[] = [];
   dbOrphans: string[] = [];
-  doublettes: string[] = [];
+  doublettes: Doublette[] = [];
 
   constructor(protected libService: LibService,
               protected router: Router) { }
@@ -23,9 +24,9 @@ export class FsOrphansComponent implements OnInit {
       self.fsOrphans = response;
       this.libService.getDBOrphans().subscribe(response => {
         self.dbOrphans = response;
-        /*this.libService.getDoublettes().subscribe(response => {
+        this.libService.getDoublettes().subscribe(response => {
           self.doublettes = response;
-        });*/
+        });
       });
     });
   }

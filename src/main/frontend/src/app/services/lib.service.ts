@@ -5,6 +5,7 @@ import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 
 import {XDocument} from '../model/XDocument';
 import {XCategory} from "../model/XCategory";
+import {Doublette} from "../model/Doublette";
 
 
 @Injectable({
@@ -16,7 +17,7 @@ export class LibService {
     private categoryUrl: string = this.baseUrl + '/categories';
     private metaUrl: string = this.baseUrl + '/meta';
     private baseURIUrl: string = this.metaUrl + '/baseURI';
-    private doublettesURIUrl: string = this.metaUrl + '/baseURI';
+    private doublettesURIUrl: string = this.metaUrl + '/doublettes';
     private fsorphansURIUrl: string = this.metaUrl + '/fsorphans';
     private dborphansURIUrl: string = this.metaUrl + '/dborphans';
 
@@ -262,13 +263,13 @@ export class LibService {
     }
 
     /**
-     * Get Orphans in DB (GET).
+     * Get Doublettes in DB/FS (GET).
      */
-    public getDoublettes(): Observable<string[]> {
-        const serviceUrl = this.dborphansURIUrl;
+    public getDoublettes(): Observable<Doublette[]> {
+        const serviceUrl = this.doublettesURIUrl;
         console.log('READ Doublettes service URL ' + serviceUrl);
 
-        return this.http.get<string[]>(serviceUrl)
+        return this.http.get<Doublette[]>(serviceUrl)
             .pipe(map((data: any) => {
                 console.log('GET Doublettes Service call result: ' +  JSON.stringify(data));
                 return data;

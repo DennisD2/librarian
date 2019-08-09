@@ -31,6 +31,15 @@ public class MetaInfoController {
 
     StoreAnalyzer storeAnalyzer = new StoreAnalyzer();
 
+    private class Doublette {
+        public String path1;
+        public String path2;
+        public Doublette(String p1, String p2) {
+            path1=p1;
+            path2=p2;
+        }
+    }
+
     @RequestMapping(value="/meta/baseURI")
     @ResponseBody
     public String getBaseURI() {
@@ -41,11 +50,12 @@ public class MetaInfoController {
     @ResponseBody
     public String getDoublettes() throws IOException {
         Map<String, String> doublettes = storeAnalyzer.getDoublettes(baseDirectory);
- /*       doublettes.forEach((doc1,doc2) -> {
-            System.out.println("Doublette candidate: " + doc1.replace(baseDirectory,"")
-                    + "(compared with: " + doc2.replace(baseDirectory,"") + ")");
-        });
-*/        return new JSONObject(doublettes).toJSONString();
+        List<Doublette> doubs = new ArrayList<>();
+        for (String key: doublettes.keySet()) {
+            Doublette d = new Doublette(key, doublettes.get(key));
+            doubs.add(d);
+        }
+        return JSONArray.toJSONString(doubs, JSONStyle.NO_COMPRESS);
     }
 
     @RequestMapping(value="/meta/fsorphans", produces={"application/json"})
