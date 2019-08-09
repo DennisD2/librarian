@@ -26,9 +26,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DocumentDisplayComponent } from './views/document/document-display/document-display.component';
-import { DoublettesComponent } from './views/meta/doublettes/doublettes.component';
 import { FsOrphansComponent } from './views/meta/fs-orphans/fs-orphans.component';
-import { DbOrphansComponent } from './views/meta/db-orphans/db-orphans.component';
 
 @NgModule({
     declarations: [
@@ -43,9 +41,7 @@ import { DbOrphansComponent } from './views/meta/db-orphans/db-orphans.component
         CategoryDeleteComponent,
         CategoryDisplayComponent,
         DocumentDisplayComponent,
-        DoublettesComponent,
         FsOrphansComponent,
-        DbOrphansComponent,
     ],
     imports: [
         BrowserModule,
