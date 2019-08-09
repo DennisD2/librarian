@@ -10,7 +10,8 @@ Categories:  <input type="text" name="cats"/>
 
 <p></p>
 
-Location: <input type="text" id="location" size="80" [(ngModel)]="xdoc.location"/>
+Location: <small><small>{{docRepoBaseUri}}</small></small>
+    <input type="text" id="location" size="80" [(ngModel)]="xdoc.location"/>
 
 Date added: <input type="text" id="timestamp" size="20" [(ngModel)]="xdoc.timestamp"/>
 <p></p>
@@ -25,4 +26,4 @@ Date added: <input type="text" id="timestamp" size="20" [(ngModel)]="xdoc.timest
     <span>Cancel</span>
 </button>
 
-<app-document-display [docUrl]="xdoc.location" [page]="1" [rotation]="0" [zoom]="0.5"></app-document-display>
+<app-document-display [docUrl]="getContentURI(xdoc)" [page]="1" [rotation]="0" [zoom]="0.5"></app-document-display>

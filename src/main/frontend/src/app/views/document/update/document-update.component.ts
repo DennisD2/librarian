@@ -16,7 +16,7 @@ export class DocumentUpdateComponent implements OnInit {
     xdoc: XDocument = newXDocument();
     allCategories: XCategory[] = null;
 
-    docRepoBaseUri: string = 'undefined';
+    docRepoBaseUri: string;
 
     constructor(protected route: ActivatedRoute,
                 protected router: Router,

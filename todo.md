@@ -9,6 +9,7 @@
 * Add search (in title, in category) fields
 
 ## Issues done
+* Create with relative path
 * Remove host etc. part from locations
 * Migrate to Material Table
 * Add JS PDF view 

@@ -15,6 +15,7 @@ import * as moment from 'moment';
 export class DocumentCreateComponent implements OnInit {
     title: string = 'Create Document';
     xdoc: XDocument = newXDocument();
+    docRepoBaseUri: string;
 
     constructor(protected route: ActivatedRoute,
                 protected router: Router,
@@ -24,7 +25,11 @@ export class DocumentCreateComponent implements OnInit {
     }
 
     ngOnInit() {
-    }
+        let self = this;
+        // Get BaseURI
+        self.libService.getBaseURI().subscribe(baseURI => {
+            self.docRepoBaseUri = baseURI;
+        });   }
 
     public cancel_view(): void {
         console.log("cancel create.")
@@ -43,4 +48,7 @@ export class DocumentCreateComponent implements OnInit {
         this.router.navigateByUrl('');
     }
 
+    public getContentURI(xdoc: XDocument) : string {
+        return this.docRepoBaseUri + xdoc.location;
+    }
 }
