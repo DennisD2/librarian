@@ -1,13 +1,14 @@
 
-<div *ngIf="!isLoaded">
-    <br>
-    Loading document from {{docUrl}}, please wait ...
-    <br>
-</div>
+
 <div id="contentView">
     <p>
 
     <div id="pdfView" *ngIf="getContentType() === 'pdf'">
+        <div *ngIf="!isLoaded">
+            <br>
+            Loading document from {{docUrl}}, please wait ...
+            <br>
+        </div>
         <div *ngIf="isLoaded">
             <br>
             <span><input type="text" id="pageInput" size="5" [(ngModel)]="pageInput" (change)="newPageValue()"> / {{totalPages}} pages</span>
