@@ -63,4 +63,22 @@ export class DocumentDisplayComponent implements OnInit {
     console.log("new page value " + this.pageInput );
     this.page = this.pageInput;
   }
+
+
+  public getContentType(): string {
+    const location = this.docUrl.toLowerCase();
+    if (location.endsWith(".pdf")) {
+      return "pdf";
+    }
+    this.isLoaded = true;
+    if (location.endsWith(".png") || location.endsWith(".jpg") || location.endsWith(".gif")) {
+      return "image";
+    }
+    if (location.endsWith(".html") || location.endsWith(".htm") ) {
+      return "html";
+    }
+    if (location.endsWith(".txt") ) {
+      return "text";
+    }
+  }
 }

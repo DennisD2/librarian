@@ -4,10 +4,10 @@
 * Category column horizontal alignment
 * Create document page: add category handling
 * Improve Sort by category
-* Support more Content Types: Images, pure HTML.
 * Add search (in title, in category) fields
 
 ## Issues done
+* Support more Content Types: Images, pure HTML.
 * Add page to create "diff" between DB and file system. Show new files, orphans, doublettes.
 * Create with relative path
 * Remove host etc. part from locations

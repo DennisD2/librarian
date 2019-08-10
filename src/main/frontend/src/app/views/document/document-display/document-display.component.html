@@ -1,41 +1,65 @@
+
 <div *ngIf="!isLoaded">
     <br>
     Loading document from {{docUrl}}, please wait ...
     <br>
 </div>
+<div id="contentView">
+    <p>
 
-<div *ngIf="isLoaded">
-    <br>
-    <span><input type="text" id="pageInput" size="5" [(ngModel)]="pageInput" (change)="newPageValue()"> / {{totalPages}} pages</span>
+    <div id="pdfView" *ngIf="getContentType() === 'pdf'">
+        <div *ngIf="isLoaded">
+            <br>
+            <span><input type="text" id="pageInput" size="5" [(ngModel)]="pageInput" (change)="newPageValue()"> / {{totalPages}} pages</span>
 
-    <br>
-    <button (click)="previousPage()" class="btn btn-primary">
-        <i class="material-icons">arrow_back_ios</i>
-        <span>Previous</span>
-    </button>
+            <br>
+            <button (click)="previousPage()" class="btn btn-primary">
+                <i class="material-icons">arrow_back_ios</i>
+                <span>Previous</span>
+            </button>
 
-    <button (click)="nextPage()" class="btn btn-primary">
-        <i class="material-icons">arrow_forward_ios</i>
-        <span>Next</span>
-    </button>
+            <button (click)="nextPage()" class="btn btn-primary">
+                <i class="material-icons">arrow_forward_ios</i>
+                <span>Next</span>
+            </button>
 
-    <button (click)="rotateRight()" class="btn btn-primary">
-        <i class="material-icons">rotate_90_degrees_ccw</i>
-        <span>Rotate</span>
-    </button>
+            <button (click)="rotateRight()" class="btn btn-primary">
+                <i class="material-icons">rotate_90_degrees_ccw</i>
+                <span>Rotate</span>
+            </button>
 
-    <button (click)="zoomIn()" class="btn btn-primary">
-        <i class="material-icons">zoom_in</i>
-        <span>Zoom in</span>
-    </button>
+            <button (click)="zoomIn()" class="btn btn-primary">
+                <i class="material-icons">zoom_in</i>
+                <span>Zoom in</span>
+            </button>
 
-    <button (click)="zoomOut()" class="btn btn-primary">
-        <i class="material-icons">zoom_out</i>
-        <span>Zoom out</span>
-    </button>
+            <button (click)="zoomOut()" class="btn btn-primary">
+                <i class="material-icons">zoom_out</i>
+                <span>Zoom out</span>
+            </button>
+        </div>
+        <pdf-viewer [src]="docUrl" [original-size]="false" [show-all]="false" [(page)]="page" [rotation]="rotation"
+                    [zoom]="zoom" (after-load-complete)="afterLoadComplete($event)">
+        </pdf-viewer>
+    </div>
+
+    <div id="imageView" *ngIf="getContentType() === 'image'">
+        <img src="{{docUrl}}" alt="{{docUrl}}" >
+    </div>
+
+    <div id="textView" *ngIf="getContentType() === 'text'">
+        <!--<object data="{{docUrl}}">
+            Warning: file_to_include.html could not be included.
+        </object> -->
+        Link to document of type HTML: <a href="{{docUrl}}">docUrl</a>
+    </div>
+
+    <div id="htmlView" *ngIf="getContentType() === 'html'">
+        <!--<object data="{{docUrl}}">
+            Warning: file_to_include.html could not be included.
+        </object> -->
+        Link to document of type HTML: <a href="{{docUrl}}">{{docUrl}}</a>
+    </div>
+    <p>
 </div>
-
-<pdf-viewer [src]="docUrl" [original-size]="false" [show-all]="false" [(page)]="page" [rotation]="rotation"
-            [zoom]="zoom"  (after-load-complete)="afterLoadComplete($event)">
-</pdf-viewer>
 
