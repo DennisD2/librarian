@@ -48,19 +48,13 @@
         <img src="{{docUrl}}" alt="{{docUrl}}" >
     </div>
 
-    <div id="textView" *ngIf="getContentType() === 'text'">
+    <div id="othersView" *ngIf="getContentType() !== 'image'">
         <!--<object data="{{docUrl}}">
             Warning: file_to_include.html could not be included.
         </object> -->
-        Link to document of type HTML: <a href="{{docUrl}}">docUrl</a>
+        Link to document of type {{getContentType()}}: <a href="{{docUrl}}">docUrl</a>
     </div>
 
-    <div id="htmlView" *ngIf="getContentType() === 'html'">
-        <!--<object data="{{docUrl}}">
-            Warning: file_to_include.html could not be included.
-        </object> -->
-        Link to document of type HTML: <a href="{{docUrl}}">{{docUrl}}</a>
-    </div>
     <p>
 </div>
 

@@ -80,5 +80,9 @@ export class DocumentDisplayComponent implements OnInit {
     if (location.endsWith(".txt") ) {
       return "text";
     }
+
+    if (location.endsWith(".avi") || location.endsWith(".mp4") || location.endsWith(".flv") ) {
+      return "video";
+    }
   }
 }
