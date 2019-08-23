@@ -25,11 +25,15 @@ export class DocumentCreateComponent implements OnInit {
     }
 
     ngOnInit() {
+        let filePath = this.route.snapshot.paramMap.get('path');
+        console.log("Path from param map: " + filePath);
+
         let self = this;
         // Get BaseURI
         self.libService.getBaseURI().subscribe(baseURI => {
             self.docRepoBaseUri = baseURI;
-        });   }
+        });
+    }
 
     public cancel_view(): void {
         console.log("cancel create.")

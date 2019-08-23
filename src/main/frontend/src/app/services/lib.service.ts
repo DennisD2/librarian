@@ -20,6 +20,7 @@ export class LibService {
     private doublettesURIUrl: string = this.metaUrl + '/doublettes';
     private fsorphansURIUrl: string = this.metaUrl + '/fsorphans';
     private dborphansURIUrl: string = this.metaUrl + '/dborphans';
+    private removeFileUrl: string = this.metaUrl + '/removeFile';
 
     constructor(protected http: HttpClient) {
     }
@@ -272,6 +273,21 @@ export class LibService {
         return this.http.get<Doublette[]>(serviceUrl)
             .pipe(map((data: any) => {
                 console.log('GET Doublettes Service call result: ' +  JSON.stringify(data));
+                return data;
+            }))
+            .pipe(catchError((e: any) => this.handleError(e)));
+    }
+
+    /**
+     * Remove a file in FS (GET).
+     */
+    public removeFile(path: string): Observable<string> {
+        const serviceUrl = this.removeFileUrl + '/' + path.replace('/', '%3F');
+        console.log('Delete file service URL ' + serviceUrl);
+
+        return this.http.get<string>(serviceUrl)
+            .pipe(map((data: any) => {
+                console.log('Delete file Service call result: ' +  data);
                 return data;
             }))
             .pipe(catchError((e: any) => this.handleError(e)));

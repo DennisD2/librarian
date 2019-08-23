@@ -15,6 +15,8 @@ export class FsOrphansComponent implements OnInit {
   dbOrphans: string[] = [];
   doublettes: Doublette[] = [];
 
+  urlPrefix: string = 'doc';
+
   constructor(protected libService: LibService,
               protected router: Router) { }
 
@@ -29,5 +31,24 @@ export class FsOrphansComponent implements OnInit {
         });
       });
     });
+  }
+
+  delete(orphan: string) {
+    console.log('Delete FS orphan: ' + orphan);
+    this.libService.removeFile(orphan).subscribe(response => {
+      console.log('Delete FS orphan returned: ' + response);
+      this.router.navigateByUrl(this.urlPrefix + '/metainfo/analyze');
+    });
+  }
+
+  create(orphan: string) {
+    console.log('Create document from FS orphan: ' + orphan);
+    this.router.navigateByUrl(this.urlPrefix + '/create/' + this.escapePath(orphan));
+  }
+
+  escapePath( path: string) : string {
+    const escapedPath = path.replace('/', '%3F');
+    console.log('Escaped path: ' + escapedPath);
+    return escapedPath;
   }
 }

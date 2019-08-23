@@ -14,6 +14,7 @@ import {FsOrphansComponent} from "./views/meta/fs-orphans/fs-orphans.component";
 // Router configuration.
 export const routes: Routes = [
     {path: 'doc/create', component: DocumentCreateComponent},
+    {path: 'doc/create/:path', component: DocumentCreateComponent},
     {path: 'doc/update/:id', component: DocumentUpdateComponent},
     {path: 'doc/list', component: DocumentListComponent},
     {path: 'doc/delete/:id', component: DocumentDeleteComponent},

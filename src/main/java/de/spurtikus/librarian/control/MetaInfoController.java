@@ -14,6 +14,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -92,5 +95,14 @@ public class MetaInfoController {
         List<String> dbOrphans = storeAnalyzer.filesInDBButNotInFS(docInDB, baseDirectory, docInFS);
 
         return JSONArray.toJSONString(dbOrphans, JSONStyle.NO_COMPRESS);
+    }
+
+    @RequestMapping(value="/meta/removeFile/{path}", produces={"application/json"})
+    @ResponseBody
+    public String removeFile(String path) throws IOException {
+        Path p = Paths.get(baseDirectory + storeAnalyzer.reEscape(path));
+        System.out.println("TBI Delete: " + p.toAbsolutePath());
+        //Files.delete(p);
+        return "OK";
     }
 }
