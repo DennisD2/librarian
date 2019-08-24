@@ -3,6 +3,8 @@ import {LibService} from "../../../services/lib.service";
 import {Router} from "@angular/router";
 import {Doublette} from "../../../model/Doublette";
 
+import {escape} from "../../../util/helper";
+
 @Component({
   selector: 'app-fs-orphans',
   templateUrl: './fs-orphans.component.html',
@@ -14,8 +16,6 @@ export class FsOrphansComponent implements OnInit {
   fsOrphans: string[] = [];
   dbOrphans: string[] = [];
   doublettes: Doublette[] = [];
-
-  urlPrefix: string = 'doc';
 
   constructor(protected libService: LibService,
               protected router: Router) { }
@@ -37,18 +37,13 @@ export class FsOrphansComponent implements OnInit {
     console.log('Delete FS orphan: ' + orphan);
     this.libService.removeFile(orphan).subscribe(response => {
       console.log('Delete FS orphan returned: ' + response);
-      this.router.navigateByUrl(this.urlPrefix + '/metainfo/analyze');
+      this.router.navigateByUrl('metainfo/analyze');
     });
   }
 
   create(orphan: string) {
     console.log('Create document from FS orphan: ' + orphan);
-    this.router.navigateByUrl(this.urlPrefix + '/create/' + this.escapePath(orphan));
+    this.router.navigateByUrl('doc/create/' + escape(orphan));
   }
 
-  escapePath( path: string) : string {
-    const escapedPath = path.replace('/', '%3F');
-    console.log('Escaped path: ' + escapedPath);
-    return escapedPath;
-  }
 }

@@ -8,3 +8,10 @@ export function getRemoteId(selfUrl: string): string {
     console.log("remote id: " + id);
     return id;
 }
+
+export function escape(s: string) {
+    while (s.indexOf('/') !== -1) {
+        s = s.replace('/', '%3F');
+    }
+    return s
+}

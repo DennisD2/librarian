@@ -7,6 +7,7 @@ import {XDocument} from '../model/XDocument';
 import {XCategory} from "../model/XCategory";
 import {Doublette} from "../model/Doublette";
 
+import {escape} from "../util/helper";
 
 @Injectable({
     providedIn: 'root'
@@ -282,7 +283,7 @@ export class LibService {
      * Remove a file in FS (GET).
      */
     public removeFile(path: string): Observable<string> {
-        const serviceUrl = this.removeFileUrl + '/' + path.replace('/', '%3F');
+        const serviceUrl = this.removeFileUrl + '/' + escape(path);
         console.log('Delete file service URL ' + serviceUrl);
 
         return this.http.get<string>(serviceUrl)
@@ -292,4 +293,6 @@ export class LibService {
             }))
             .pipe(catchError((e: any) => this.handleError(e)));
     }
+
+
 }
