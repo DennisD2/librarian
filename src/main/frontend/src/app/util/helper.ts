@@ -10,8 +10,11 @@ export function getRemoteId(selfUrl: string): string {
 }
 
 export function escape(s: string) {
-    while (s.indexOf('/') !== -1) {
-        s = s.replace('/', '%3F');
+    /*while (s.indexOf('/') !== -1) {
+        s = s.replace('/', '%2F');
     }
-    return s
+    while (s.indexOf(' ') !== -1) {
+        s = s.replace('/', '%20');
+    }*/
+    return btoa(s);
 }

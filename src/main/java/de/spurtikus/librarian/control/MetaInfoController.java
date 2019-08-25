@@ -9,8 +9,11 @@ import net.minidev.json.JSONObject;
 import net.minidev.json.JSONStyle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
@@ -18,6 +21,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.Map;
 
@@ -97,12 +101,13 @@ public class MetaInfoController {
         return JSONArray.toJSONString(dbOrphans, JSONStyle.NO_COMPRESS);
     }
 
-    @RequestMapping(value="/meta/removeFile/{path}", produces={"application/json"})
+    @RequestMapping(value="/meta/removeFile/{encpath}", produces={"application/json"})
     @ResponseBody
-    public String removeFile(String path) throws IOException {
-        Path p = Paths.get(baseDirectory + storeAnalyzer.reEscape(path));
+    public String removeFile( @PathVariable String encpath) throws IOException {
+        byte[] decoded = Base64.getDecoder().decode(encpath);
+        Path p = Paths.get(baseDirectory + new String(decoded));
         System.out.println("TBI Delete: " + p.toAbsolutePath());
-        //Files.delete(p);
+        Files.delete(p);
         return "OK";
     }
 }
