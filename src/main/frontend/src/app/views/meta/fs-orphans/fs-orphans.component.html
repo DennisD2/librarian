@@ -34,6 +34,7 @@ Analysis of file system and database regarding inconsistencies.
     <tr>
       <th>Id</th>
       <th>Name</th>
+      <th>Operations</th>
     </tr>
     <tr *ngFor="let orphan of fsOrphans; let i = index">
       <td>
@@ -41,6 +42,8 @@ Analysis of file system and database regarding inconsistencies.
       </td>
       <td>
         <span class="xorphans">{{orphan}}</span>
+      </td>
+        <td>
           <button mat-button (click)="delete(orphan)">
               <i class="material-icons">delete_forever</i>
               Delete from file system
