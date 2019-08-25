@@ -3,81 +3,81 @@ Analysis of file system and database regarding inconsistencies.
 
 <h3>Doublette Candidates</h3>
 <div *ngIf="doublettes.length > 0">
-  Based on filesize, these {{doublettes.length}} files in file system may be doublettes.
-  <table class="xorphans">
-    <tr>
-      <th>Id</th>
-      <th>Object 1</th>
-      <th>Object 2</th>
-    </tr>
-    <tr *ngFor="let doublette of doublettes; let i = index">
-      <td>
-        <span class="xorphans">{{i}}</span>
-      </td>
-      <td>
-        <span class="xorphans">{{doublette.path1}}</span>
-      </td>
-      <td>
-        <span class="xorphans">{{doublette.path2}}</span>
-      </td>
-    </tr>
-  </table>
+    Based on filesize, these {{doublettes.length}} files in file system may be doublettes.
+    <table class="xorphans">
+        <tr>
+            <th>Id</th>
+            <th>Object 1</th>
+            <th>Object 2</th>
+        </tr>
+        <tr *ngFor="let doublette of doublettes; let i = index">
+            <td>
+                <span class="xorphans">{{i}}</span>
+            </td>
+            <td>
+                <span class="xorphans">{{doublette.path1}}</span>
+            </td>
+            <td>
+                <span class="xorphans">{{doublette.path2}}</span>
+            </td>
+        </tr>
+    </table>
 </div>
 <div *ngIf="! doublettes.length > 0">
-  Ok, no doublette candidates found.
+    Ok, no doublette candidates found.
 </div>
 
 <h3>File System Orphans</h3>
 <div *ngIf="fsOrphans.length > 0">
-  These {{fsOrphans.length}} objects exist in file system, but cannot be found in database.
-  <table class="xorphans">
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-      <th>Operations</th>
-    </tr>
-    <tr *ngFor="let orphan of fsOrphans; let i = index">
-      <td>
-        <span class="xorphans">{{i}}</span>
-      </td>
-      <td>
-        <span class="xorphans">{{orphan}}</span>
-      </td>
-        <td>
-          <button mat-button (click)="delete(orphan)">
-              <i class="material-icons">delete_forever</i>
-              Delete from file system
-          </button>
-        <button (click)="create(orphan)" class="btn btn-primary">
-          <i class="material-icons">create</i>
-          <span>Create new document</span>
-        </button>
-      </td>
-    </tr>
-  </table>
+    These {{fsOrphans.length}} objects exist in file system, but cannot be found in database.
+    <table class="xorphans">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Operations</th>
+        </tr>
+        <tr *ngFor="let orphan of fsOrphans; let i = index">
+            <td>
+                <span class="xorphans">{{i}}</span>
+            </td>
+            <td>
+                <span class="xorphans">{{orphan}}</span>
+            </td>
+            <td>
+                <button mat-button (click)="delete(orphan)">
+                    <i class="material-icons">delete_forever</i>
+                    Delete from file system
+                </button>
+                <button (click)="create(orphan)" class="btn btn-primary">
+                    <i class="material-icons">create</i>
+                    <span>Create new document</span>
+                </button>
+            </td>
+        </tr>
+    </table>
 </div>
 <div *ngIf="! dbOrphans.length > 0">
-  Ok, no file system orphans found.
+    Ok, no file system orphans found.
 </div>
 
 <h3>Database Orphans</h3>
 <div *ngIf="dbOrphans.length > 0">
-  These {{dbOrphans.length}} objects exist in database, but cannot be found on file system.
-  <table class="xorphans">
-    <tr>
-      <th>Id</th>
-      <th>Name</th>
-    </tr>
-    <tr *ngFor="let orphan of dbOrphans; let i = index">
-      <td>
-        <span class="xorphans">{{i}}</span>
-      </td>
-      <td>
-        <span class="xorphans">{{orphan}}</span>
-      </td>
-    </tr>
-  </table>
+    These {{dbOrphans.length}} objects exist in database, but cannot be found on file system.
+    <table class="xorphans">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        <tr *ngFor="let orphan of dbOrphans; let i = index">
+            <td>
+                <span class="xorphans">{{i}}</span>
+            </td>
+            <td>
+                <span class="xorphans">{{orphan}}</span>
+            </td>
+        </tr>
+    </table>
 </div>
 <div *ngIf="! dbOrphans.length > 0">
-  Ok, no database orphans found.
+    Ok, no database orphans found.
 </div>
