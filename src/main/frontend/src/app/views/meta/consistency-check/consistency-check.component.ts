@@ -46,4 +46,10 @@ export class ConsistencyCheckComponent implements OnInit {
     this.router.navigateByUrl('doc/create/' + escape(orphan));
   }
 
+  update(orphan: string) {
+    console.log('TODO: Update document in DB: ' + orphan);
+    // Get doc for location==orphan
+    // Best thing to do is to change REST endpoint to return list<document> instead of <string>
+    //this.router.navigateByUrl('doc/update/' + escape(orphan));
+  }
 }

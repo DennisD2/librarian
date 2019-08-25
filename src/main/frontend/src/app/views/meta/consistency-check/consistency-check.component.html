@@ -56,7 +56,7 @@ Analysis of file system and database regarding inconsistencies.
         </tr>
     </table>
 </div>
-<div *ngIf="! dbOrphans.length > 0">
+<div *ngIf="! fsOrphans.length > 0">
     Ok, no file system orphans found.
 </div>
 
@@ -67,6 +67,7 @@ Analysis of file system and database regarding inconsistencies.
         <tr>
             <th>Id</th>
             <th>Name</th>
+            <th>Operations</th>
         </tr>
         <tr *ngFor="let orphan of dbOrphans; let i = index">
             <td>
@@ -74,6 +75,12 @@ Analysis of file system and database regarding inconsistencies.
             </td>
             <td>
                 <span class="xorphans">{{orphan}}</span>
+            </td>
+            <td>
+                <button mat-button (click)="update(orphan)">
+                    <i class="material-icons">create</i>
+                    Update or delete from DB
+                </button>
             </td>
         </tr>
     </table>
