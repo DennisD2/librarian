@@ -9,7 +9,7 @@ import {CategoryCreateComponent} from "./views/category/category-create/category
 import {CategoryUpdateComponent} from "./views/category/category-update/category-update.component";
 import {CategoryListComponent} from "./views/category/category-list/category-list.component";
 import {CategoryDeleteComponent} from "./views/category/category-delete/category-delete.component";
-import {FsOrphansComponent} from "./views/meta/fs-orphans/fs-orphans.component";
+import {ConsistencyCheckComponent} from "./views/meta/consistency-check/consistency-check.component";
 
 // Router configuration.
 export const routes: Routes = [
@@ -24,7 +24,7 @@ export const routes: Routes = [
     {path: 'cat/list', component: CategoryListComponent},
     {path: 'cat/delete/:id', component: CategoryDeleteComponent},
 
-    {path: 'metainfo/analyze', component: FsOrphansComponent},
+    {path: 'metainfo/analyze', component: ConsistencyCheckComponent},
 
     {path: '', redirectTo: 'doc/list', pathMatch: 'full'},
 ];

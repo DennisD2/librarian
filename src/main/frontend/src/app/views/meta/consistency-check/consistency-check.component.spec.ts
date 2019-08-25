@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FsOrphansComponent } from './fs-orphans.component';
+import { ConsistencyCheckComponent } from './consistency-check.component';
 
-describe('FsOrphansComponent', () => {
-  let component: FsOrphansComponent;
-  let fixture: ComponentFixture<FsOrphansComponent>;
+describe('ConsistencyCheckComponent', () => {
+  let component: ConsistencyCheckComponent;
+  let fixture: ComponentFixture<ConsistencyCheckComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FsOrphansComponent ]
+      declarations: [ ConsistencyCheckComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FsOrphansComponent);
+    fixture = TestBed.createComponent(ConsistencyCheckComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

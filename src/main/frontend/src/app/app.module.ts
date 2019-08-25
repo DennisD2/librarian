@@ -26,22 +26,22 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { DocumentDisplayComponent } from './views/document/document-display/document-display.component';
-import { FsOrphansComponent } from './views/meta/fs-orphans/fs-orphans.component';
+import { ConsistencyCheckComponent } from './views/meta/consistency-check/consistency-check.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         DocumentCreateComponent,
-        DocumentUpdateComponent,
+        DocumentDisplayComponent,
         DocumentListComponent,
+        DocumentUpdateComponent,
         DocumentDeleteComponent,
+        CategoryCreateComponent,
+        CategoryDisplayComponent,
         CategoryListComponent,
         CategoryUpdateComponent,
-        CategoryCreateComponent,
         CategoryDeleteComponent,
-        CategoryDisplayComponent,
-        DocumentDisplayComponent,
-        FsOrphansComponent,
+        ConsistencyCheckComponent
     ],
     imports: [
         BrowserModule,

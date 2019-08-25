@@ -7,11 +7,11 @@ import {escape} from "../../../util/helper";
 
 @Component({
   selector: 'app-fs-orphans',
-  templateUrl: './fs-orphans.component.html',
-  styleUrls: ['./fs-orphans.component.css']
+  templateUrl: './consistency-check.component.html',
+  styleUrls: ['./consistency-check.component.css']
 })
-export class FsOrphansComponent implements OnInit {
-  title: string = 'Librarian Analysis Result';
+export class ConsistencyCheckComponent implements OnInit {
+  title: string = 'Librarian Consistency Check Result';
 
   fsOrphans: string[] = [];
   dbOrphans: string[] = [];
