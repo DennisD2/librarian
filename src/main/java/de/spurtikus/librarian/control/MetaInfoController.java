@@ -101,12 +101,12 @@ public class MetaInfoController {
         return JSONArray.toJSONString(dbOrphans, JSONStyle.NO_COMPRESS);
     }
 
-    @RequestMapping(value="/meta/removeFile/{encpath}", produces={"application/json"})
+    @RequestMapping(value="/meta/removeFile/{encpath}")
     @ResponseBody
     public String removeFile( @PathVariable String encpath) throws IOException {
         byte[] decoded = Base64.getDecoder().decode(encpath);
         Path p = Paths.get(baseDirectory + new String(decoded));
-        System.out.println("TBI Delete: " + p.toAbsolutePath());
+        System.out.println("Deleting: " + p.toAbsolutePath());
         Files.delete(p);
         return "OK";
     }

@@ -286,8 +286,8 @@ export class LibService {
         const serviceUrl = this.removeFileUrl + '/' + escape(path);
         console.log('Delete file service URL ' + serviceUrl);
 
-        return this.http.get<string>(serviceUrl)
-            .pipe(map((data: any) => {
+        return this.http.get<string>(serviceUrl, {responseType: 'text' as 'json'})
+            .pipe(map((data: string) => {
                 console.log('Delete file Service call result: ' +  data);
                 return data;
             }))

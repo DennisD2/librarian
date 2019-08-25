@@ -3,7 +3,7 @@ Analysis of file system and database regarding inconsistencies.
 
 <h3>Doublette Candidates</h3>
 <div *ngIf="doublettes.length > 0">
-  Based on filesize, these files in file system may be doublettes.
+  Based on filesize, these {{doublettes.length}} files in file system may be doublettes.
   <table class="xorphans">
     <tr>
       <th>Id</th>
@@ -29,7 +29,7 @@ Analysis of file system and database regarding inconsistencies.
 
 <h3>File System Orphans</h3>
 <div *ngIf="fsOrphans.length > 0">
-  These objects exist in file system, but cannot be found in database.
+  These {{fsOrphans.length}} objects exist in file system, but cannot be found in database.
   <table class="xorphans">
     <tr>
       <th>Id</th>
@@ -59,7 +59,7 @@ Analysis of file system and database regarding inconsistencies.
 
 <h3>Database Orphans</h3>
 <div *ngIf="dbOrphans.length > 0">
-  These objects exist in database, but cannot be found on file system.
+  These {{dbOrphans.length}} objects exist in database, but cannot be found on file system.
   <table class="xorphans">
     <tr>
       <th>Id</th>
