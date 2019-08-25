@@ -25,8 +25,13 @@ export class DocumentCreateComponent implements OnInit {
     }
 
     ngOnInit() {
-        let filePath = this.route.snapshot.paramMap.get('path');
-        console.log("Path from param map: " + filePath);
+        // If called from check consistency view, we have a path to use as initial location
+        let filePath = this.route.snapshot.paramMap.get('encpath');
+        if (filePath !== null) {
+            const decodedPath = atob(filePath);
+            console.log("Path from param map: " + decodedPath);
+            this.xdoc.location = decodedPath;
+        }
 
         let self = this;
         // Get BaseURI

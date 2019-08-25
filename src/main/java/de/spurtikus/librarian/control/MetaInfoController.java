@@ -5,15 +5,12 @@ import de.spurtikus.librarian.analyzer.StoreAnalyzer;
 import de.spurtikus.librarian.data.DocumentRepository;
 import de.spurtikus.librarian.data.model.Document;
 import net.minidev.json.JSONArray;
-import net.minidev.json.JSONObject;
 import net.minidev.json.JSONStyle;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
@@ -104,6 +101,7 @@ public class MetaInfoController {
     @RequestMapping(value="/meta/removeFile/{encpath}")
     @ResponseBody
     public String removeFile( @PathVariable String encpath) throws IOException {
+        // Path contains slashed an thus is encoded to not confuse REST implementations
         byte[] decoded = Base64.getDecoder().decode(encpath);
         Path p = Paths.get(baseDirectory + new String(decoded));
         System.out.println("Deleting: " + p.toAbsolutePath());

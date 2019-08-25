@@ -9,12 +9,11 @@ export function getRemoteId(selfUrl: string): string {
     return id;
 }
 
+/**
+ * Create ASCII string representation from a string that can be used inside URIs/routes.
+ *
+ * @param s
+ */
 export function escape(s: string) {
-    /*while (s.indexOf('/') !== -1) {
-        s = s.replace('/', '%2F');
-    }
-    while (s.indexOf(' ') !== -1) {
-        s = s.replace('/', '%20');
-    }*/
     return btoa(s);
 }
