@@ -14,7 +14,7 @@ FROM centos/tools
 # TC_HOME
 #
 ENV OPT=/opt \
-    SW_REPO=http://raspberrypi/software/fordocker
+    SWREPO=http://raspberrypi/software/fordocker
 RUN echo ${SWREPO}
 
 WORKDIR ${OPT}
