@@ -1,0 +1,15 @@
+[Unit]
+Description=Librarian service
+After=network.target
+
+[Service]
+ExecStart=/home/pi/librarian/librarian-start.sh
+WorkingDirectory=/home/pi/librarian
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=pi
+
+[Install]
+WantedBy=multi-user.target
+
