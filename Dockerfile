@@ -15,7 +15,7 @@ FROM centos/tools
 #
 ENV OPT=/opt \
     SW_REPO=http://raspberrypi/software/fordocker
-#RUN echo ${SWREPO}
+RUN echo ${SWREPO}
 
 WORKDIR ${OPT}
 ADD ${SWREPO}/OpenJDK8U-jdk_x64_linux_hotspot_8u192b12.tar.gz \
