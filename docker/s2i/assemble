@@ -1,0 +1,32 @@
+#!/bin/bash
+# Shell script for assembling artifacts.
+#
+# Requires following environment variables:
+#
+# GIT_URL: URL to source repository.
+#  Example: GIT_URL=https://github.com/DennisD2/librarian.git
+#
+# MAVEN_CMDLINE: maven command line.
+#  Example: MAVEN_CMDLINE="mvn clean install -DskipTests"
+#
+# WORKDIR: directory into git clones the source. Variable is set by base image.
+#
+# Example for setting environment for a docker run:
+#  docker run -e GIT_URL=https://github.com/DennisD2/librarian.git -e MAVEN_CMDLINE="mvn clean install -DskipTests"
+
+echo "Assembling start."
+echo "GIT_URL: ......... ${GIT_URL}"
+echo "MAVEN_CMDLINE: ... ${MAVEN_CMDLINE}"
+echo "WORKDIR: ......... ${WORKDIR}"
+
+cd ${WORKDIR}
+
+echo "Cloning Git URL ${GIT_URL}"
+git clone ${GIT_URL}
+
+# Assuming a single subdir
+cd ${WORKDIR}/*
+
+echo "Starting maven ${MAVEN_CMDLINE} in " `pwd`
+${MAVEN_CMDLINE}
+echo "Assembling done."

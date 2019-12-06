@@ -1,0 +1,3 @@
+#!/bin/bash
+/opt/s2i/assemble
+/opt/s2i/run
