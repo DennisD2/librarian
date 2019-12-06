@@ -1,4 +1,4 @@
-ROM ubuntu
+FROM ubuntu
 
 # Dockerfile for building Java applications.
 #
@@ -10,11 +10,13 @@ ROM ubuntu
 #
 # Provided ENV vars
 # OPT
+# SWREPO
+# WORKDIR
+# M2_HOME, JAVA_8_HOME, JAVA_HOME, NODE_HOME
 #
 ENV OPT=/opt \
     SWREPO=http://raspberrypi/software/fordocker \
     WORKDIR=/opt/app
-
 
 RUN apt-get update && \
     apt-get -yq install curl git maven openjdk-8-jdk
@@ -33,11 +35,11 @@ ENV M2_HOME=${OPT}/apache-maven-3.6.0 \
     NODE_HOME=${OPT}/node-v10.13.0-linux-x64
 
 ENV JAVA_HOME=${JAVA_8_HOME} \
-    PATH="${M2_HOME}/bin:${JAVA_HOME}/bin:${NODE_HOME}/bin:${TC_HOME}/bin:${PATH}" \
+    PATH="${M2_HOME}/bin:${JAVA_HOME}/bin:${NODE_HOME}/bin:${PATH}" \
     HOME="${WORKDIR}"
 
 WORKDIR ${WORKDIR}
 RUN chgrp -R 0 ${WORKDIR} && \
     chmod -R g+rwX ${WORKDIR}
 
-#ENTRYPOINT [ "/opt/s2i/entrypoint" ]
+ENTRYPOINT [ "/opt/s2i/entrypoint" ]
