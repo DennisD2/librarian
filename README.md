@@ -44,3 +44,20 @@ mvn clean install -DskipTests
 ```
 java -jar target/librarian-1.0.0-SNAPSHOT.jar
 ```
+
+# Running with systemd
+
+Copy ```bin/librarian.service``` to ```/etc/systemd/system/```.
+
+Test service start with:
+```
+sudo systemctl start librarian.service
+```
+Check service startup log:
+```
+sudo systemctl status librarian.service
+```
+Enable service to be started during system boot:
+```
+sudo systemctl enable librarian.service
+```
