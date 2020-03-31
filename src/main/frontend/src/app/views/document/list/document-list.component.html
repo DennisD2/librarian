@@ -14,6 +14,9 @@
 
 <h2>{{title}}</h2>
 
+Filter: <input type="text" id="searchFilter" size="20" [(ngModel)]="searchFilter" (change)="filterChanged()">
+<br>
+
 <mat-paginator [pageSize]=200 [pageSizeOptions]="[200, 10, 25, 100]"></mat-paginator>
 <mat-table [dataSource]="dataSource" matSort>
     <ng-container matColumnDef="title">

@@ -17,6 +17,8 @@ export class DocumentListComponent implements OnInit {
     displayedColumns = ['title', 'authors', 'publishedYear', 'location', 'timestamp', 'categories'];
     xdocs: XDocument[] = [];
 
+    private searchFilter: string = '';
+
     dataSource = new MatTableDataSource(this.xdocs);
     @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
     @ViewChild(MatSort, {static: true}) sort: MatSort;
@@ -53,6 +55,11 @@ export class DocumentListComponent implements OnInit {
 
     public meta_analyze(): void {
         this.router.navigateByUrl('/metainfo/analyze');
+    }
+
+    public filterChanged(): void {
+        console.log("changed filter!");
+        this.dataSource.filter = this.searchFilter;
     }
 
 }
