@@ -1,7 +1,6 @@
 package de.spurtikus.librarian;
 
 import de.spurtikus.librarian.data.DocumentRepository;
-import de.spurtikus.librarian.data.model.Category;
 import de.spurtikus.librarian.data.model.Document;
 import org.assertj.core.util.Lists;
 import org.junit.Test;
@@ -11,15 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.contains;
-import static org.springframework.data.domain.ExampleMatcher.GenericPropertyMatchers.startsWith;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
