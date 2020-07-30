@@ -16,8 +16,8 @@
     src: /home/pi/librarian/test2.mv.db
     dest: /home/dennis/00_BACKUPS/librarian-{{ansible_date_time.iso8601_basic_short}}
 
-# Synchronize doclib document base to librarian server
-- synchronize:
+- name: Synchronize doclib document base to librarian server
+  synchronize:
     src: /home/dennis/doclib
     dest: /srv/www
     delete: yes

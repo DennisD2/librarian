@@ -1,6 +1,7 @@
 # TODOs
 
 ## Open issues
+* Use more vars in Playbook
 * Category column horizontal alignment
 * Create document page: add category handling
 * Improve Sort by category
