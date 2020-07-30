@@ -61,3 +61,21 @@ Enable service to be started during system boot:
 ```
 sudo systemctl enable librarian.service
 ```
+
+# Deploy app to server using Ansible
+See ```playbook``` directory.
+
+The playbook 
+* deploys the librarian jar file,
+* syncronizes documents, 
+* backups DB and 
+* restart librarian app
+
+## Adapt playbook
+Add user+password for ssh in ```group_vars/all.yml```.
+Set correct hostname in ```hosts```.
+
+Execute playbook:
+```bash
+ansible-playbook -i hosts site.yml
+```
