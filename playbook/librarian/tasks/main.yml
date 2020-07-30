@@ -1,0 +1,29 @@
+- name: Upload jar file with owner and permissions
+  copy:
+    src: /home/dennis/IdeaProjects/librarian/target/librarian-1.0.0-SNAPSHOT.jar
+    dest: /home/pi/librarian/librarian-1.0.0-SNAPSHOT.jar
+    owner: pi
+    group: pi
+    mode: '0644'
+
+- name: Stop librarian
+  service:
+    name: librarian
+    state: stopped
+
+- name: Download DB file to .../<host>/... as a backup
+  fetch:
+    src: /home/pi/librarian/test2.mv.db
+    dest: /home/dennis/00_BACKUPS/librarian-{{ansible_date_time.iso8601_basic_short}}
+
+# Synchronize doclib document base to librarian server
+- synchronize:
+    src: /home/dennis/doclib
+    dest: /srv/www
+    delete: yes
+
+- name: Start librarian
+  service:
+    name: librarian
+    state: started
+

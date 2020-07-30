@@ -1,0 +1,11 @@
+---
+# This playbook deploys the librarian jar file, syncronizes documents, backups DB and restart librarian app
+
+- hosts: librarian-server
+  remote_user: root
+  become: yes
+  become_method: sudo
+
+  roles:
+    - librarian
+
