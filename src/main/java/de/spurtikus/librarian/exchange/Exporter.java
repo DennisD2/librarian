@@ -45,9 +45,9 @@ public class Exporter {
         sb.append("      location: \"");
         sb.append(niceNull(d.getLocation()) + "\",\n");
 
-        sb.append("      categories: \"");
-        List<String> cList = d.getCategories().stream().map(c -> c.getCategory()).collect(Collectors.toList());
-        sb.append(cList + "\"\n");
+        sb.append("      categories: ");
+        List<String> cList = d.getCategories().stream().map(c -> "\"" + c.getCategory() + "\"").collect(Collectors.toList());
+        sb.append(cList + "\n");
 
         sb.append("   },\n");
         return sb;
