@@ -48,7 +48,7 @@ public class Document implements Serializable {
     // List of Categories
     @Getter
     @Setter
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             joinColumns=@JoinColumn(name="DOCUMENT_ID", referencedColumnName="ID"),
             inverseJoinColumns=@JoinColumn(name="CATEGORY_ID", referencedColumnName="ID"))

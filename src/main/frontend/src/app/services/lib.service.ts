@@ -15,7 +15,10 @@ import {escape} from "../util/helper";
 export class LibService {
     private baseUrl: string = '';
     private documentUrl: string = this.baseUrl + '/documents';
-    private categoryUrl: string = this.baseUrl + '/categories';
+    private allCategoriesUrl: string = this.baseUrl + '/categories';
+    // http://localhost:8080/documents/4/categories
+    private categoryUrl_pre: string = this.baseUrl + '/documents/';
+    private categoryUrl_post: string = this.baseUrl + '/categories';
     private metaUrl: string = this.baseUrl + '/meta';
     private baseURIUrl: string = this.metaUrl + '/baseURI';
     private doublettesURIUrl: string = this.metaUrl + '/doublettes';
@@ -162,7 +165,7 @@ export class LibService {
      * Get ALL categories (GET).
      */
     public getAllCategories(): Observable<XCategory[]> {
-        const serviceUrl = this.categoryUrl;
+        const serviceUrl = this.allCategoriesUrl;
         console.log('READ ALL CATEGORIES service URL ' + serviceUrl);
 
         return this.http.get<XCategory[]>(serviceUrl)
@@ -178,7 +181,7 @@ export class LibService {
      * @param id Category to read.
      */
     public getCategory(id: string): Observable<XCategory> {
-        const serviceUrl = this.categoryUrl + '/' + id;
+        const serviceUrl = this.allCategoriesUrl + '/' + id;
         console.log('READ service URL ' + serviceUrl);
 
         return this.http.get<XCategory>(serviceUrl)
@@ -194,7 +197,7 @@ export class LibService {
      * @param cat Category to update or create.
      */
     public updateOrCreateCategory(cat: XCategory): Observable<XCategory> {
-        const serviceUrl = this.categoryUrl + '/' + cat.id;
+        const serviceUrl = this.allCategoriesUrl + '/' + cat.id;
         console.log('UPDATE/CREATE service URL ' + serviceUrl);
         const data = JSON.stringify(cat);
         console.log('POST data: ' + data);
@@ -294,5 +297,18 @@ export class LibService {
             .pipe(catchError((e: any) => this.handleError(e)));
     }
 
+    /*
+     * Get all categories for a document
+     */
+    getCategories(id: string) {
+        const serviceUrl = this.categoryUrl_pre + id + this.categoryUrl_post;
+        console.log('READ CATEGORIES service URL ' + serviceUrl);
 
+        return this.http.get<XCategory[]>(serviceUrl)
+            .pipe(map((data: any) => {
+                console.log('GET CATEGORIES Service call result: ' + data._embedded.categories);
+                return data._embedded.categories;
+            }))
+            .pipe(catchError((e: any) => this.handleError(e)));
+    }
 }

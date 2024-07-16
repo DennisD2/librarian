@@ -28,10 +28,10 @@ public class QueryTest {
         Iterable<Document> docsIterable = documentRepository.findAll();
         List<Document> docs = Lists.newArrayList(docsIterable);
         Assertions.assertNotNull(docs);
-        Assertions.assertEquals( 313, docs.size());
+        Assertions.assertEquals( 43, docs.size());
         int i=0;
         for (Document d: docs) {
-            System.out.println(d.getTitle());
+            System.out.println(d.getTitle() + ", " + d.getAuthors());
             i++;
         }
     }

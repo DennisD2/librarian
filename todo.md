@@ -1,6 +1,7 @@
 # TODOs
 
 ## Open issues
+* DB Orphan button: connect to delete/update code
 * Use more vars in Playbook
 * Category column horizontal alignment
 * Create document page: add category handling

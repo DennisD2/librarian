@@ -44,6 +44,7 @@ public class Application {
 
             // save a couple of Documents
             Document doc = new Document("HP-75C FORTH", 1983, "file:///home/dennis/doclib/software/75Forth.pdf");
+            doc.setAuthors("Cassady, John");
             List<Category> cat = new ArrayList<>();
             cat.add(cat_sw);
             cat.add(cat_hist);
