@@ -1,11 +1,9 @@
 package de.spurtikus.librarian.exchange;
 
 import de.spurtikus.librarian.data.DocumentRepository;
-import de.spurtikus.librarian.data.model.Category;
 import de.spurtikus.librarian.data.model.Document;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
