@@ -22,17 +22,15 @@ public class Exporter {
         sb.append("const ");
         sb.append(varName);
         sb.append(" = [\n");
-
-
-        sb.append("   \n");
         dStream.forEach(d -> sb.append(appendDocument(d)));
+        sb.append("]\n");
 
         return sb;
     }
 
     private StringBuffer appendDocument(Document d) {
         StringBuffer sb = new StringBuffer();
-        sb.append("{\n");
+        sb.append("   {\n");
 
         sb.append("      id: \"");
         sb.append(d.getId() + "\",\n");
@@ -51,7 +49,7 @@ public class Exporter {
         List<String> cList = d.getCategories().stream().map(c -> c.getCategory()).collect(Collectors.toList());
         sb.append(cList + "\"\n");
 
-        sb.append("},\n");
+        sb.append("   },\n");
         return sb;
     }
 
