@@ -39,26 +39,25 @@ public class Exporter {
         sb.append("      id: \"");
         sb.append(d.getId() + "\",\n");
         sb.append("      title: \"");
-        sb.append(d.getTitle() + "\",\n");
+        sb.append(niceNull(d.getTitle()) + "\",\n");
         sb.append("      authors: \"");
-        sb.append(d.getAuthors() + "\",\n");
+        sb.append(niceNull(d.getAuthors()) + "\",\n");
         sb.append("      published: \"");
         sb.append(d.getPublishedYear() + "\",\n");
         sb.append("      timestamp: \"");
-        sb.append(d.getTimestamp() + "\",\n");
+        sb.append(niceNull(d.getTimestamp()) + "\",\n");
         sb.append("      location: \"");
-        sb.append(d.getLocation() + "\",\n");
+        sb.append(niceNull(d.getLocation()) + "\",\n");
 
-
-        // categories
         sb.append("      categories: \"");
-        List<Category> cats = d.getCategories();
         List<String> cList = d.getCategories().stream().map(c -> c.getCategory()).collect(Collectors.toList());
-        //List<String> cList = new ArrayList<>();
-        //d.getCategories().stream().map(c -> c.getCategory()).forEach(c -> sb.append(c));
-        sb.append(cList + "\",\n");
+        sb.append(cList + "\"\n");
 
         sb.append("},\n");
         return sb;
+    }
+
+    private String niceNull(String s) {
+        return (s == null) ? "" : s;
     }
 }
